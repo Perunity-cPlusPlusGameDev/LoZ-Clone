@@ -8,5 +8,5 @@ project(LoZ-Clone)
 
 find_package(SFML COMPONENTS graphics window system REQUIRED)
 include_directories(${SFML_INCLUDE_DIR})
-add_executable(exe main.cpp)
+add_executable(exe main.cpp game.cpp)
 target_link_libraries(exe ${SFML_LIBRARIES})
