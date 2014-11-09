@@ -10,6 +10,6 @@ External Help:
 ------------------
 - irc.boxbox.org - #SFML
  - Aster          CMake
- - _DBug_         CMake
+ - \_DBug_         CMake
  - Kim            CMake
  - eXpl0iter      CMake
