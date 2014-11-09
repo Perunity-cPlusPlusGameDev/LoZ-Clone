@@ -6,11 +6,7 @@ set(SFML_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
 
 project(LoZ-Clone)
 
-find_package(SFML REQUIRED COMPONENTS graphics window system)
-if(SFML_FOUND)
-    include_directories(${SFML_INCLUDE_DIR})
-endif()
-
-add_executable(exe main.cpp)
-LINK_DIRECTORIES(${CMAKE_SOURCE_DIR})
+find_package(SFML REQUIRED)
+include_directories(${SFML_INCLUDE_DIR})
+add_executable(exe main.cpp ${SFML_INCLUDE_DIR}/Graphics.hpp)
 target_link_libraries(exe ${SFML_LIBRARIES})
