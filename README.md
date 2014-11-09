@@ -6,10 +6,12 @@ Team Members:
   - Elewook - Alexander
   - Spokenlore - Samson
 
-External Help:
+People we love <3
 ------------------
 - irc.boxbox.org - #SFML
- - Aster          CMake
- - \_DBug_         CMake
- - Kim            CMake
- - eXpl0iter      CMake
+ -  Helped with CMake
+     - Aster
+     - \_DBug_
+     - Kim
+     - eXpl0iter
+     - tsjost
