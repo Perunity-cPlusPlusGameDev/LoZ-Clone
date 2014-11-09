@@ -8,5 +8,8 @@ project(LoZ-Clone)
 
 find_package(SFML COMPONENTS graphics window system REQUIRED)
 include_directories(${SFML_INCLUDE_DIR})
-add_executable(exe main.cpp game.cpp)
+
+file(GLOB SRCS *.cpp *.h *.hpp)
+
+add_executable(exe main.cpp ${SRCS})
 target_link_libraries(exe ${SFML_LIBRARIES})
