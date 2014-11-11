@@ -1,3 +1,4 @@
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
@@ -11,6 +12,8 @@ void Game::Run()
 
 	timePerFrame = sf::milliseconds(16);
 	timer.restart();
+
+	//LoadMap();
 
 	while (window.isOpen())
 	{
@@ -33,12 +36,27 @@ void Game::Update()
 
 void Game::Render()
 {
-
+	window.clear();
+	DrawMap();
+	window.display();
 }
 
 void Game::ProcessEvents()
 {
+	sf::Event event;
+	while(window.pollEvent(event))
+	{
+		switch(event.type)
+		{
+			case sf::Event::Closed:
+			window.close();
+			break;
 
+			default:
+			std::cout << "An event has fired which hasn't been added to the process list" << std::endl;
+			break;
+		}
+	}
 }
 
 void Game::ProcessInput()
@@ -47,6 +65,11 @@ void Game::ProcessInput()
 }
 
 void Game::LoadMap(const std::string& fileName)
+{
+
+}
+
+void Game::DrawMap()
 {
 
 }
