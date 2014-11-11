@@ -5,9 +5,9 @@
 
 
 void Game::Run()
-{	
+{
 	screenDimensions = sf::Vector2i(800, 600);
-	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Isometric Game");
+	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Zelda Clone");
 
 	timePerFrame = sf::milliseconds(16);
 	timer.restart();
@@ -30,15 +30,23 @@ void Game::Update()
 {
 
 }
+
 void Game::Render()
 {
 
 }
+
 void Game::ProcessEvents()
 {
 
 }
+
 void Game::ProcessInput()
+{
+
+}
+
+void Game::LoadMap(const std::string& fileName)
 {
 
 }
