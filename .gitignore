@@ -1,4 +1,4 @@
-build/
-!/Maps/
-!/Textures/
+/build/*
+!/build/Maps/
+!/build/Textures/
 lib/
