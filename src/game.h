@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "player.h"
+#include "gameMenu.h"
 
 class Game
 {
@@ -21,6 +22,7 @@ private:
 	sf::Clock timer;
 	sf::Time timePerFrame;
 	Player player;
+	gameMenu menu;
 };
 
 
