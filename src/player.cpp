@@ -9,8 +9,6 @@ void Player::Run(sf::Vector2i screenDimensions)
 		std::cout << "Texture file cannot be found!" << std::endl;
 	tile.setTexture(tileTexture);
 	// default position
-	x = 500;
-	y = 500;
 	std::cout << "Texture Loaded!" << std::endl;
 
 
@@ -43,11 +41,9 @@ void Player::Run(sf::Vector2i screenDimensions)
 
     // set up AnimatedSprite
     AnimatedSprite animatedsprite(sf::seconds(0.2), true, false);
-    animatedsprite.setPosition(x,y);
 
     speed = 80.f;
     noKeyWasPressed = true;
-
 }
 
 void Player::Render()
@@ -94,6 +90,9 @@ void Player::DrawPlayer(sf::RenderWindow& window)
         noKeyWasPressed = false;
 
 	}
+	sf::Vector2f position = animatedsprite.getPosition();
+	CheckCollision(position.x, position.y);
+	animatedsprite.setPosition(position);
 
 	animatedsprite.play(*currentAnimation);
     animatedsprite.move(movement * frameTime.asSeconds());
@@ -113,7 +112,7 @@ void Player::ProcessInput()
 
 }
 
-void Player::CheckCollision()
+void Player::CheckCollision(float &x, float &y)
 {
 	if ( x < 0 )
 	{
@@ -131,6 +130,7 @@ void Player::CheckCollision()
 	{
 		y = 600 - TILE_SIZE;
 	}
+	//std::cout << x << " " <<  y << std::endl;
 }
 
 void Player::Move()

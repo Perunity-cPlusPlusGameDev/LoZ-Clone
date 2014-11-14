@@ -13,7 +13,7 @@ public:
 	void Run(sf::Vector2i screenDimensions);
 	void SetPos(int posx, int posy, int speed, int dir);
 	void GetPos(int &posX, int &posY);
-	void CheckCollision();
+
 	void DrawPlayer(sf::RenderWindow& window);
 private:
 	static const int TILE_SIZE = 32;
@@ -22,6 +22,7 @@ private:
 	void LoadPlayer();
 	void ProcessInput();
 	void Move();
+	void CheckCollision(float &x, float &y);
 	sf::Sprite tile;
 	sf::Texture tileTexture;
 	int x;
@@ -39,6 +40,7 @@ private:
 
 	float speed;
     bool noKeyWasPressed;
+
 };
 
 
