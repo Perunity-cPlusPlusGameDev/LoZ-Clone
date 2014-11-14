@@ -17,27 +17,27 @@ void Player::Run(sf::Vector2i screenDimensions)
 	 // set up the animations for all four directions (set spritesheet and push frames)
 
     walkingAnimationDown.setSpriteSheet(tileTexture);
-    walkingAnimationDown.addFrame(sf::IntRect( 2 * TILE_SIZE, 0 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
-    walkingAnimationDown.addFrame(sf::IntRect( 1 * TILE_SIZE, 0 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
     walkingAnimationDown.addFrame(sf::IntRect( 0 * TILE_SIZE, 0 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
+    walkingAnimationDown.addFrame(sf::IntRect( 1 * TILE_SIZE, 0 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
+    walkingAnimationDown.addFrame(sf::IntRect( 2 * TILE_SIZE, 0 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
 
 
     walkingAnimationLeft.setSpriteSheet(tileTexture);
-    walkingAnimationLeft.addFrame(sf::IntRect( 2 * TILE_SIZE, 1 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
-    walkingAnimationLeft.addFrame(sf::IntRect( 1 * TILE_SIZE, 1 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
     walkingAnimationLeft.addFrame(sf::IntRect( 0 * TILE_SIZE, 1 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
+    walkingAnimationLeft.addFrame(sf::IntRect( 1 * TILE_SIZE, 1 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
+    walkingAnimationLeft.addFrame(sf::IntRect( 2 * TILE_SIZE, 1 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
 
 
     walkingAnimationRight.setSpriteSheet(tileTexture);
-    walkingAnimationRight.addFrame(sf::IntRect( 2 * TILE_SIZE, 2 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
-    walkingAnimationRight.addFrame(sf::IntRect( 1 * TILE_SIZE, 2 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
     walkingAnimationRight.addFrame(sf::IntRect( 0 * TILE_SIZE, 2 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
+    walkingAnimationRight.addFrame(sf::IntRect( 1 * TILE_SIZE, 2 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
+    walkingAnimationRight.addFrame(sf::IntRect( 2 * TILE_SIZE, 2 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
 
 
     walkingAnimationUp.setSpriteSheet(tileTexture);
-    walkingAnimationUp.addFrame(sf::IntRect( 2 * TILE_SIZE, 3 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
-    walkingAnimationUp.addFrame(sf::IntRect( 1 * TILE_SIZE, 3 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
     walkingAnimationUp.addFrame(sf::IntRect( 0 * TILE_SIZE, 3 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
+    walkingAnimationUp.addFrame(sf::IntRect( 1 * TILE_SIZE, 3 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
+    walkingAnimationUp.addFrame(sf::IntRect( 2 * TILE_SIZE, 3 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
 
 
 
