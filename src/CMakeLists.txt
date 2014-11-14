@@ -13,7 +13,7 @@ ENDIF(APPLE)
 
 
 
-find_package(SFML COMPONENTS graphics window system REQUIRED)
+find_package(SFML COMPONENTS graphics window system audio REQUIRED)
 include_directories(${SFML_INCLUDE_DIR})
 
 file(GLOB SRCS *.cpp *.h *.hpp)

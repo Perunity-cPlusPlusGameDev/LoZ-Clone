@@ -2,4 +2,6 @@
 !/build/Maps/
 !/build/Textures/
 !/build/Sound/
+!/build/openal32.dll
+!/build/libsndfile-1.dll
 lib/

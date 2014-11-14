@@ -13,8 +13,8 @@ void Game::Run()
 	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Zelda Clone");
 
 	// Load Main Menu
-	menu.loadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y); 
-	
+	menu.loadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
+
 	if(!tileTexture.loadFromFile("Textures/tiles.png"))
 		std::cout << "Texture file cannot be found!" << std::endl;
 	tile.setTexture(tileTexture);
