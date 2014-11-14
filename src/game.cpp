@@ -12,14 +12,20 @@ void Game::Run()
 	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Zelda Clone");
 
 	// Load Main Menu
-	menu.loadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
+	menu.LoadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
+	// Load First Map
+	map.LoadMap("Maps/Map1.txt");
+	player.Run();
 
+	speed = 10;
+	int posX;
+	int posY;
 	timePerFrame = sf::milliseconds(16);
 	timer.restart();
 
-	map.LoadMap("Maps/Map1.txt");
 
-	player.Run();
+
+
 
 	while (window.isOpen())
 	{
@@ -71,7 +77,7 @@ void Game::ProcessInput()
 	sf::Event event;
 	while(window.pollEvent(event))
 	{
-		int speed = 10;
+
 		//What's the best way to implement this? -Bahbi
 		if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::W)
 		{
@@ -89,11 +95,11 @@ void Game::ProcessInput()
 		{
 			player.SetPos(1, 0, speed);
 		}
+
 		if(event.type == sf::Event::Closed)
 		{
 			window.close();
 		}
 	}
-
 }
 

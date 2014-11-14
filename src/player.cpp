@@ -31,6 +31,7 @@ void Player::LoadPlayer()
 
 void Player::DrawPlayer(sf::RenderWindow& window)
 {
+
 	tile.setPosition(x,y);
 	tile.setTextureRect(sf::IntRect(0, 0, TILE_SIZE, TILE_SIZE));
 	window.draw(tile);
@@ -43,7 +44,23 @@ void Player::ProcessInput()
 
 void Player::CheckCollision()
 {
-
+	std::cout << x << " " << y << std::endl;
+	if ( x < 0 )
+	{
+		x = 0;
+	}
+	if ( y <= 0 )
+	{
+		y = 0;
+	}
+	if ( x > 800 - TILE_SIZE )
+	{
+		x = 800 - TILE_SIZE;
+	}
+	if ( y > 600 - TILE_SIZE )
+	{
+		y = 600 - TILE_SIZE;
+	}
 }
 
 void Player::Move()
@@ -51,12 +68,16 @@ void Player::Move()
 
 }
 
-void Player::GetPos()
+void Player::GetPos(int &posX, int &posY)
 {
-
+	posX = x;
+	posY = y;
 }
+
 void Player::SetPos(int posx, int posy, int speed){
+
 	x += posx * speed;
 	y += posy * speed;
+	CheckCollision();
 }
 

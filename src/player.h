@@ -11,6 +11,8 @@ class Player
 public:
 	void Run();
 	void SetPos(int posx, int posy, int speed);
+	void GetPos(int &posX, int &posY);
+	void CheckCollision();
 	void DrawPlayer(sf::RenderWindow& window);
 private:
 	static const int TILE_SIZE = 32;
@@ -18,8 +20,8 @@ private:
 	void Update();
 	void LoadPlayer();
 	void ProcessInput();
-	void CheckCollision();
-	void GetPos();
+
+
 	void Move();
 	sf::Sprite tile;
 	sf::Texture tileTexture;

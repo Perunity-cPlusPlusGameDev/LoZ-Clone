@@ -1,6 +1,6 @@
 #include "gameMenu.h"
 
-void gameMenu::loadMenu(const std::string& fileName, sf::RenderWindow &window, int x, int y){
+void gameMenu::LoadMenu(const std::string& fileName, sf::RenderWindow &window, int x, int y){
 	// Music
     if (!music.openFromFile(fileName)){
         return;

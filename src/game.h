@@ -21,6 +21,7 @@ private:
 	Player player;
 	gameMenu menu;
 	Map map;
+	int speed;
 };
 
 
