@@ -6,15 +6,13 @@
 
 #include "game.h"
 
-
 //Nick's github test comment! :D yes
 void Game::Run()
 {
+	State = MAINMENU;
 	screenDimensions = sf::Vector2i(800, 600);
 	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Zelda Clone");
 
-	// Load Main Menu
-	menu.LoadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
 	// Load First Map
 	map.LoadMap("Maps/Map1.txt");
 	player.Run();
@@ -24,23 +22,26 @@ void Game::Run()
 	timePerFrame = sf::milliseconds(16);
 	timer.restart();
 
-
-
-
-
+	// Load Main Menu
+	menu.LoadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
 	while (window.isOpen())
 	{
-		if (timePerFrame <= timer.getElapsedTime())
+		if( State == PLAYING )
 		{
-			timer.restart();
+			if (timePerFrame <= timer.getElapsedTime())
+			{
+				timer.restart();
 
-			Update();
-			Render();
+				Update();
+				Render();
+			}
 		}
 		//ProcessEvents();
 		ProcessInput();
 	}
 }
+
+
 
 void Game::Update()
 {
@@ -94,6 +95,10 @@ void Game::ProcessInput()
 		else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::D)
 		{
 			player.SetPos(1, 0, speed, RIGHT);
+		}
+		else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R)
+		{
+			State = PLAYING;
 		}
 
 		if(event.type == sf::Event::Closed)

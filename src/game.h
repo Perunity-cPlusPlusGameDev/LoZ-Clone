@@ -22,12 +22,19 @@ private:
 	gameMenu menu;
 	Map map;
 	int speed;
+	int State;
 	enum DIRECTION
 	{
 	    UP = 0,
 	    DOWN = 1,
 	    LEFT = 2,
 	    RIGHT = 3,
+	};
+	enum GAMESTATE
+	{
+		MAINMENU = 0,
+		PLAYING = 1,
+		PAUSED = 2,
 	};
 };
 

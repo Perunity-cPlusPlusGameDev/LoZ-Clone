@@ -3,6 +3,8 @@
 #include <SFML/Audio.hpp>
 #include <string>
 #include <iostream>
+
+
 class gameMenu
 {
 public:
@@ -11,5 +13,8 @@ private:
 	sf::Music music;
 	sf::Sprite mainMenu;
 	sf::Texture mainMenuTexture;
+	sf::Font gameFont;
+	sf::Text gameText;
+	void MakeText(std::string btnName, sf::RenderWindow &window, int x, int y);
 };
 
