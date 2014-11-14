@@ -15,6 +15,9 @@ void Player::Run()
 	if(!tileTexture.loadFromFile("Textures/panda.png"))
 		std::cout << "Texture file cannot be found!" << std::endl;
 	tile.setTexture(tileTexture);
+	// default position
+	x = 500;
+	y = 500;
 	std::cout << "Texture Loaded!" << std::endl;
 }
 
@@ -35,7 +38,7 @@ void Player::LoadPlayer()
 
 void Player::DrawPlayer(sf::RenderWindow& window)
 {
-	tile.setPosition(500,500);
+	tile.setPosition(x,y);
 	tile.setTextureRect(sf::IntRect(0, 0, TILE_SIZE, TILE_SIZE));
 	window.draw(tile);
 }
@@ -58,5 +61,9 @@ void Player::Move()
 void Player::GetPos()
 {
 
+}
+void Player::SetPos(int posx, int posy, int speed){
+	x += posx * speed;
+	y += posy * speed;
 }
 

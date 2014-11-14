@@ -35,7 +35,7 @@ void Game::Run()
 			Update();
 			Render();
 		}
-		ProcessEvents();
+		//ProcessEvents();
 		ProcessInput();
 	}
 }
@@ -73,7 +73,36 @@ void Game::ProcessEvents()
 
 void Game::ProcessInput()
 {
-
+	sf::Event event;
+	while(window.pollEvent(event))
+	{
+		int speed = 10;
+		//What's the best way to implement this? -Bahbi
+		if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::W)
+		{
+			std::cout << "KeyPressed: W\n";
+			player.SetPos(0, -1, speed);
+		}
+		if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S)
+		{
+			std::cout << "KeyPressed: S\n";
+			player.SetPos(0, 1, speed);
+		}
+		if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::A)
+		{
+			std::cout << "KeyPressed: A\n";
+			player.SetPos(-1, 0, speed);
+		}
+		if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::D)
+		{
+			std::cout << "KeyPressed: D\n";
+			player.SetPos(1, 0, speed);
+		}
+		if(event.type == sf::Event::Closed)
+		{
+			window.close();
+		}
+	}
 
 }
 

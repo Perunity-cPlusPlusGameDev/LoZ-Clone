@@ -5,6 +5,7 @@ class Player
 {
 public:
 	void Run();
+	void SetPos(int posx, int posy, int speed);
 	void DrawPlayer(sf::RenderWindow& window);
 private:
 	static const int TILE_SIZE = 32;
@@ -17,6 +18,8 @@ private:
 	void Move();
 	sf::Sprite tile;
 	sf::Texture tileTexture;
+	int x;
+	int y;
 };
 
 

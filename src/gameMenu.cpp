@@ -16,7 +16,7 @@ void gameMenu::loadMenu(const std::string& fileName, sf::RenderWindow &window, i
 	mainMenu.setTexture(mainMenuTexture);
 	mainMenu.setPosition(0, 0);
 	mainMenu.setTextureRect(sf::IntRect(0, 0, x, y));
-	
+
 	window.clear();
 	window.draw(mainMenu);
 	window.display();
