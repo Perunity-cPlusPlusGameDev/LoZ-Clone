@@ -8,6 +8,7 @@ class Game
 public:
 	void Run();
 private:
+	static const int TILE_SIZE = 32;
 	void Update();
 	void Render();
 	void ProcessEvents();

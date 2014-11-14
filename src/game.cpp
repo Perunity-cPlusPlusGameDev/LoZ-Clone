@@ -5,7 +5,6 @@
 #include <sstream>
 
 #include "game.h"
-#include "player.h"
 //Nick's github test comment! :D yes
 void Game::Run()
 {
@@ -15,8 +14,9 @@ void Game::Run()
 	// Load Main Menu
 	menu.loadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
 
-	if(!tileTexture.loadFromFile("Textures/tiles.png"))
+	if(!tileTexture.loadFromFile("Textures/RPGpack_sheet.png")){
 		std::cout << "Texture file cannot be found!" << std::endl;
+	}
 	tile.setTexture(tileTexture);
 
 	timePerFrame = sf::milliseconds(16);
@@ -74,6 +74,7 @@ void Game::ProcessEvents()
 void Game::ProcessInput()
 {
 
+
 }
 
 void Game::LoadMap(const std::string& fileName)
@@ -118,8 +119,8 @@ void Game::DrawMap()
 	{
 		for (int j = 0; j < map[i].size(); j++)
 		{
-			tile.setPosition(j * 32, i * 32);
-			tile.setTextureRect(sf::IntRect(map[i][j].x * 32, map[i][j].y * 32, 32, 32));
+			tile.setPosition(j * TILE_SIZE, i * TILE_SIZE);
+			tile.setTextureRect(sf::IntRect(map[i][j].x * TILE_SIZE, map[i][j].y * TILE_SIZE, TILE_SIZE, TILE_SIZE));
 			window.draw(tile);
 		}
 	}
