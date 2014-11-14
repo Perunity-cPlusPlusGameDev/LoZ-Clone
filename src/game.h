@@ -24,6 +24,8 @@ private:
 	Player player;
 	gameMenu menu;
 	Map map;
+	Map map1;
+	Map map2;
 	int speed;
 	int State;
 	enum DIRECTION

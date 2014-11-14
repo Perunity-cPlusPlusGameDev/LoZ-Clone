@@ -14,6 +14,7 @@ public:
 	void Run();
 	void LoadMap(const std::string& fileName);
 	void DrawMap(sf::RenderWindow &window);
+	void PrintTileSheet(sf::RenderWindow &window);
 private:
 	static const int TILE_SIZE = 32;
 	std::vector<std::vector<sf::Vector2i>> map;

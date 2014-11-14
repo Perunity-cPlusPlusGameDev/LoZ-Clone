@@ -14,7 +14,11 @@ void Game::Run()
 	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Zelda Clone");
 
 	// Load First Map
+	// To do: fix
 	map.LoadMap("Maps/Map1.txt");
+	map1.LoadMap("Maps/Map1.1.txt");
+	map2.LoadMap("Maps/Map1.2.txt");
+
 	player.Run(screenDimensions);
 
 	speed = 10;
@@ -51,7 +55,10 @@ void Game::Update()
 void Game::Render()
 {
 	window.clear();
+	// To do: fix
 	map.DrawMap(window);
+	map1.DrawMap(window);
+	map2.DrawMap(window);
 	player.DrawPlayer(window);
 	window.display();
 }
