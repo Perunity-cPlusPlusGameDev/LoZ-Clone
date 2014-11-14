@@ -1,11 +1,4 @@
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-
 #include "player.h"
-#include "game.h"
 
 void Player::Run()
 {

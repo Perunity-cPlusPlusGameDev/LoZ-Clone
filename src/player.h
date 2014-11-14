@@ -1,5 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+
 
 class Player
 {
