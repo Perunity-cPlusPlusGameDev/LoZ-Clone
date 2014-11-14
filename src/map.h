@@ -1,6 +1,6 @@
 #pragma once
-#ifndef GAME_H
-#define GAME_H
+#ifndef MAP_H
+#define MAP_H
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
