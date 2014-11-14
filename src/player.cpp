@@ -5,6 +5,7 @@
 #include <sstream>
 
 #include "player.h"
+#include "game.h"
 
 void Player::Run()
 {
@@ -12,8 +13,6 @@ void Player::Run()
 		std::cout << "Texture file cannot be found!" << std::endl;
 	tile.setTexture(tileTexture);
 	std::cout << "Texture Loaded!" << std::endl;
-
-	
 }
 
 void Player::Render()
@@ -33,9 +32,8 @@ void Player::LoadPlayer()
 
 void Player::DrawPlayer()
 {
-	tile.setPosition(2,2);
+	tile.setPosition(500,500);
 	window.draw(tile);
-	std::cout << "Player Drawn!" << std::endl;
 }
 
 void Player::ProcessInput()

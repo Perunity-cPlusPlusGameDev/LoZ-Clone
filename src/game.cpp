@@ -21,7 +21,6 @@ void Game::Run()
 
 	LoadMap("Maps/Map1.txt");
 
-	Player player;
 	player.Run();
 
 	while (window.isOpen())
@@ -47,7 +46,7 @@ void Game::Render()
 {
 	window.clear();
 	DrawMap();
-	Player::DrawPlayer();
+	player.DrawPlayer();
 	window.display();
 }
 

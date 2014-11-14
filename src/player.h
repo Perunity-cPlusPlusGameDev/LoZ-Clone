@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 
 class Player
 {
@@ -8,8 +9,7 @@ public:
 private:
 	void Render();
 	void Update();
-	void LoadPlayer();
-	// void DrawPlayer();	
+	void LoadPlayer();	
 	void ProcessInput();
 	void CheckCollision();
 	void Move();

@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "player.h"
 
 class Game
 {
@@ -19,7 +20,7 @@ private:
 	sf::Vector2i screenDimensions;
 	sf::Clock timer;
 	sf::Time timePerFrame;
-
+	Player player;
 };
 
 
