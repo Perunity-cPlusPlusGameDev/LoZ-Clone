@@ -1,4 +1,7 @@
 #pragma once
+#ifndef GAME_H
+#define GAME_H
+
 #include <SFML/Graphics.hpp>
 #include "player.h"
 #include "gameMenu.h"
@@ -38,6 +41,4 @@ private:
 		PAUSED = 2,
 	};
 };
-
-
-
+#endif

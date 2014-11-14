@@ -1,4 +1,7 @@
 #pragma once
+#ifndef GAME_H
+#define GAME_H
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <fstream>
@@ -17,6 +20,4 @@ private:
 	sf::Sprite tile;
 	sf::Texture tileTexture;
 };
-
-
-
+#endif

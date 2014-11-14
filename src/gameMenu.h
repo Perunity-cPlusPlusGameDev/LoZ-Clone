@@ -1,4 +1,7 @@
 #pragma once
+#ifndef GAMEMENU_H
+#define GAMEMENU_H
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <string>
@@ -17,4 +20,4 @@ private:
 	sf::Text gameText;
 	void MakeText(std::string btnName, sf::RenderWindow &window, int x, int y);
 };
-
+#endif

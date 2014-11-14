@@ -1,4 +1,7 @@
 #pragma once
+#ifndef PLAYER_H
+#define PLAYER_H
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <iostream>
@@ -42,6 +45,4 @@ private:
     bool noKeyWasPressed;
 
 };
-
-
-
+#endif
