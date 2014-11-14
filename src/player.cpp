@@ -31,8 +31,6 @@ void Player::LoadPlayer()
 
 void Player::DrawPlayer(sf::RenderWindow& window)
 {
-
-
 	if ( direction == 0 )
 	{
 		tile.setTextureRect(sf::IntRect(0 * TILE_SIZE, 2 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
@@ -43,7 +41,7 @@ void Player::DrawPlayer(sf::RenderWindow& window)
 	}
 	else if (direction == 2 )
 	{
-		tile.setTextureRect(sf::IntRect(5 * TILE_SIZE, 3 * TILE_SIZE, -TILE_SIZE, TILE_SIZE));
+		tile.setTextureRect(sf::IntRect(3 * TILE_SIZE, 3 * TILE_SIZE, -TILE_SIZE, TILE_SIZE));
 	}
 	else if ( direction == 3 )
 	{

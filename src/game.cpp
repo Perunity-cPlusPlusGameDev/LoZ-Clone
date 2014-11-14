@@ -20,8 +20,7 @@ void Game::Run()
 	player.Run();
 
 	speed = 10;
-	int posX;
-	int posY;
+
 	timePerFrame = sf::milliseconds(16);
 	timer.restart();
 
