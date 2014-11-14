@@ -15,7 +15,7 @@ void Game::Run()
 
 	// Load First Map
 	map.LoadMap("Maps/Map1.txt");
-	player.Run();
+	player.Run(screenDimensions);
 
 	speed = 10;
 
@@ -100,8 +100,7 @@ void Game::ProcessInput()
 		{
 			State = PLAYING;
 		}
-
-		if(event.type == sf::Event::Closed)
+		if(event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::X))
 		{
 			window.close();
 		}

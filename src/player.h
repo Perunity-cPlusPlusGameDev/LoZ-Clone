@@ -5,11 +5,12 @@
 #include <fstream>
 #include <sstream>
 
+#include "animatedsprite.h"
 
 class Player
 {
 public:
-	void Run();
+	void Run(sf::Vector2i screenDimensions);
 	void SetPos(int posx, int posy, int speed, int dir);
 	void GetPos(int &posX, int &posY);
 	void CheckCollision();
@@ -26,6 +27,18 @@ private:
 	int x;
 	int y;
 	int direction;
+
+	Animation walkingAnimationDown;
+	Animation walkingAnimationLeft;
+	Animation walkingAnimationRight;
+	Animation walkingAnimationUp;
+	Animation* currentAnimation = &walkingAnimationDown;
+	AnimatedSprite animatedsprite;
+	sf::Clock frameClock;
+	sf::Time frameTime;
+
+	float speed;
+    bool noKeyWasPressed;
 };
 
 

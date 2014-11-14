@@ -20,6 +20,7 @@ void gameMenu::LoadMenu(const std::string& fileName, sf::RenderWindow &window, i
 	window.clear();
 	window.draw(mainMenu);
 	MakeText("Press R to start", window, x/2, y-100);
+	MakeText("Press X to exit", window, x/2, y-50);
 	window.display();
 	std::cout << "Texture loaded!\n";
 }
