@@ -96,6 +96,10 @@ void Game::ProcessInput()
 		{
 			player.SetPos(1, 0, speed, RIGHT);
 		}
+		else if(event.type == sf::Event::KeyReleased)
+		{
+			player.SetPos(0, 0, speed, STOP);
+		}
 		else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R)
 		{
 			State = PLAYING;

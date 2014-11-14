@@ -88,8 +88,8 @@ void Player::DrawPlayer(sf::RenderWindow& window)
 		currentAnimation = &walkingAnimationRight;
         movement.x += speed;
         noKeyWasPressed = false;
-
 	}
+	// Get player current position and check collision
 	sf::Vector2f position = animatedsprite.getPosition();
 	CheckCollision(position.x, position.y);
 	animatedsprite.setPosition(position);
@@ -101,8 +101,7 @@ void Player::DrawPlayer(sf::RenderWindow& window)
     {
         animatedsprite.stop();
     }
-    noKeyWasPressed = true;
-
+ 	noKeyWasPressed = true;
 	animatedsprite.update(frameTime);
 	window.draw(animatedsprite);
 }
@@ -130,7 +129,6 @@ void Player::CheckCollision(float &x, float &y)
 	{
 		y = 600 - TILE_SIZE;
 	}
-	//std::cout << x << " " <<  y << std::endl;
 }
 
 void Player::Move()
