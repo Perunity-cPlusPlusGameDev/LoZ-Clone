@@ -80,22 +80,18 @@ void Game::ProcessInput()
 		//What's the best way to implement this? -Bahbi
 		if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::W)
 		{
-			std::cout << "KeyPressed: W\n";
 			player.SetPos(0, -1, speed);
 		}
-		if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S)
+		else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S)
 		{
-			std::cout << "KeyPressed: S\n";
 			player.SetPos(0, 1, speed);
 		}
-		if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::A)
+		else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::A)
 		{
-			std::cout << "KeyPressed: A\n";
 			player.SetPos(-1, 0, speed);
 		}
-		if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::D)
+		else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::D)
 		{
-			std::cout << "KeyPressed: D\n";
 			player.SetPos(1, 0, speed);
 		}
 		if(event.type == sf::Event::Closed)
