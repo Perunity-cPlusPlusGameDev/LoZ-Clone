@@ -5,18 +5,18 @@ class Player
 {
 public:
 	void Run();
-	void DrawPlayer();	
+	void DrawPlayer(sf::RenderWindow& window);	
 private:
 	void Render();
 	void Update();
 	void LoadPlayer();	
 	void ProcessInput();
 	void CheckCollision();
-	void Move();
 	void GetPos();
+	void Move();
 	sf::Sprite tile;
 	sf::Texture tileTexture;
-	sf::RenderWindow window;
+	// sf::RenderWindow window;
 };
 
 

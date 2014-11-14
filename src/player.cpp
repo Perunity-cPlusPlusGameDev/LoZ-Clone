@@ -9,6 +9,9 @@
 
 void Player::Run()
 {
+	int i = 50;
+	int direction = 1;
+
 	if(!tileTexture.loadFromFile("Textures/player.png"))
 		std::cout << "Texture file cannot be found!" << std::endl;
 	tile.setTexture(tileTexture);
@@ -30,7 +33,7 @@ void Player::LoadPlayer()
 
 }
 
-void Player::DrawPlayer()
+void Player::DrawPlayer(sf::RenderWindow& window)
 {
 	tile.setPosition(500,500);
 	window.draw(tile);

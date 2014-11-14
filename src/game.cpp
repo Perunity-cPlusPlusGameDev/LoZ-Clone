@@ -46,7 +46,7 @@ void Game::Render()
 {
 	window.clear();
 	DrawMap();
-	player.DrawPlayer();
+	player.DrawPlayer(window);
 	window.display();
 }
 
