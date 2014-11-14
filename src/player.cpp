@@ -32,8 +32,29 @@ void Player::LoadPlayer()
 void Player::DrawPlayer(sf::RenderWindow& window)
 {
 
+
+	if ( direction == 0 )
+	{
+		tile.setTextureRect(sf::IntRect(0 * TILE_SIZE, 2 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
+	}
+	else if ( direction == 1 )
+	{
+		tile.setTextureRect(sf::IntRect(0 * TILE_SIZE, 0 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
+	}
+	else if (direction == 2 )
+	{
+		tile.setTextureRect(sf::IntRect(5 * TILE_SIZE, 3 * TILE_SIZE, -TILE_SIZE, TILE_SIZE));
+	}
+	else if ( direction == 3 )
+	{
+		tile.setTextureRect(sf::IntRect(0 * TILE_SIZE, 3 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
+	}
+	else
+	{
+		// Just in case some shit happens
+		tile.setTextureRect(sf::IntRect(0 * TILE_SIZE, 0 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
+	}
 	tile.setPosition(x,y);
-	tile.setTextureRect(sf::IntRect(0, 0, TILE_SIZE, TILE_SIZE));
 	window.draw(tile);
 }
 
@@ -44,7 +65,6 @@ void Player::ProcessInput()
 
 void Player::CheckCollision()
 {
-	std::cout << x << " " << y << std::endl;
 	if ( x < 0 )
 	{
 		x = 0;
@@ -74,8 +94,9 @@ void Player::GetPos(int &posX, int &posY)
 	posY = y;
 }
 
-void Player::SetPos(int posx, int posy, int speed){
-
+void Player::SetPos(int posx, int posy, int speed, int dir)
+{
+	direction = dir;
 	x += posx * speed;
 	y += posy * speed;
 	CheckCollision();

@@ -5,6 +5,8 @@
 #include <sstream>
 
 #include "game.h"
+
+
 //Nick's github test comment! :D yes
 void Game::Run()
 {
@@ -77,23 +79,22 @@ void Game::ProcessInput()
 	sf::Event event;
 	while(window.pollEvent(event))
 	{
-
 		//What's the best way to implement this? -Bahbi
 		if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::W)
 		{
-			player.SetPos(0, -1, speed);
+			player.SetPos(0, -1, speed, UP);
 		}
 		else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S)
 		{
-			player.SetPos(0, 1, speed);
+			player.SetPos(0, 1, speed, DOWN);
 		}
 		else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::A)
 		{
-			player.SetPos(-1, 0, speed);
+			player.SetPos(-1, 0, speed, LEFT);
 		}
 		else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::D)
 		{
-			player.SetPos(1, 0, speed);
+			player.SetPos(1, 0, speed, RIGHT);
 		}
 
 		if(event.type == sf::Event::Closed)

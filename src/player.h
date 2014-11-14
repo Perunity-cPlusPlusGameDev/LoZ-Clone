@@ -10,7 +10,7 @@ class Player
 {
 public:
 	void Run();
-	void SetPos(int posx, int posy, int speed);
+	void SetPos(int posx, int posy, int speed, int dir);
 	void GetPos(int &posX, int &posY);
 	void CheckCollision();
 	void DrawPlayer(sf::RenderWindow& window);
@@ -20,13 +20,12 @@ private:
 	void Update();
 	void LoadPlayer();
 	void ProcessInput();
-
-
 	void Move();
 	sf::Sprite tile;
 	sf::Texture tileTexture;
 	int x;
 	int y;
+	int direction;
 };
 
 
