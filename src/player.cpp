@@ -18,7 +18,8 @@ void Player::Draw(sf::RenderWindow& window)
 		if (frameCounter >= switchFrame)
 		{
 			frameCounter = 0;
-			source.x++;
+			if(velocity != sf::Vector2f(0,0))
+				source.x++;
 			if(source.x * 32 >= spriteTexture.getSize().x)
 				source.x = 0;
 		}
