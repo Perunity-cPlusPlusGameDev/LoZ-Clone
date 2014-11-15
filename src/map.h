@@ -15,7 +15,7 @@ public:
 	void LoadMap(const std::string& fileName);
 	void Draw(sf::RenderWindow &window);
 	void PrintTileSheet(sf::RenderWindow &window);
-	void GetMapSize(int &x, int &y);
+	sf::Vector2i GetMapSize();
 private:
 	static const int TILE_SIZE = 32;
 	std::vector<std::vector<sf::Vector2i>> map;

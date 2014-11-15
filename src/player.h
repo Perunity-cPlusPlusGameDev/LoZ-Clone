@@ -17,7 +17,7 @@ public:
 	void Draw(sf::RenderWindow& window);
 	void ProcessInput();
 	void Update();
-	void MapSize(int x, int y);
+	void MapSize(sf::Vector2i pos);
 private:
 	static const int TILE_SIZE = 32;
 	void Move(sf::Vector2i velocity);

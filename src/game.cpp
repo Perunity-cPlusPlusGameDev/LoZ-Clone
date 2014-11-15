@@ -12,10 +12,7 @@ void Game::Run()
 	map2.LoadMap("Maps/Map1.2.txt");
 	player.Init(screenDimensions);
 	/*End Of Initialize*/
-	// Pass x and y from map to player
-	int mapx, mapy;
-	map.GetMapSize(mapx, mapy);
-	player.MapSize(mapx, mapy);
+	player.MapSize(map.GetMapSize());// Pass x and y from map to player
 	// Load Main Menu
 	menu.LoadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
 
@@ -31,8 +28,6 @@ void Game::Run()
 		ProcessInput();
 	}
 }
-
-
 
 void Game::Update()
 {

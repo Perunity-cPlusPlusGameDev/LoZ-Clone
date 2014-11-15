@@ -122,8 +122,8 @@ void Player::SetPos(int posx, int posy, int dir) //Should be for TP's and such
 
 }
 
-void Player::MapSize(int x, int y) // Used for CheckCollision
+void Player::MapSize(sf::Vector2i pos) // Used for CheckCollision
 {
-	mapx = x;
-	mapy = y;
+	mapx = pos.x;
+	mapy = pos.y;
 }

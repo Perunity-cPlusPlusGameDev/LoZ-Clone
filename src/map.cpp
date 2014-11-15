@@ -81,8 +81,7 @@ void Map::PrintTileSheet(sf::RenderWindow &window)
 		}
 	}
 }
-void Map::GetMapSize(int &x, int &y)
+sf::Vector2i Map::GetMapSize()
 {
-	x = map[0].size();
-	y = map.size();
+	return sf::Vector2i(map[0].size(),map.size());
 }
