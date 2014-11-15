@@ -6,12 +6,16 @@ void Game::Run()
 	State = GAMESTATE::MAINMENU;
 	screenDimensions = sf::Vector2i(800, 600);
 	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Zelda Clone");
+
 	map.LoadMap("Maps/Map1.txt"); // Improve the way we handle maps
 	map1.LoadMap("Maps/Map1.1.txt");
 	map2.LoadMap("Maps/Map1.2.txt");
 	player.Init(screenDimensions);
 	/*End Of Initialize*/
-
+	// Pass x and y from map to player
+	int mapx, mapy;
+	map.GetMapSize(mapx, mapy);
+	player.MapSize(mapx, mapy);
 	// Load Main Menu
 	menu.LoadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
 
@@ -43,7 +47,6 @@ void Game::Draw()
 	player.Draw(window);
 	map1.Draw(window);
 	map2.Draw(window);
-
 	window.display();
 }
 

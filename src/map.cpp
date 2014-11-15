@@ -71,13 +71,18 @@ void Map::PrintTileSheet(sf::RenderWindow &window)
 		std::cout << "Texture file cannot be found!" << std::endl;
 	}
 	tile.setTexture(tileTexture);
-	for (int i = 0; i < 35; i++)//y
+	for (int i = 0; i < map.size(); i++)//y
 	{
-		for (int j = 0; j < 45; j++)//x
+		for (int j = 0; j < map[0].size(); j++)//x
 		{
 			tile.setPosition(j * TILE_SIZE, i * TILE_SIZE);
 			tile.setTextureRect(sf::IntRect(j* TILE_SIZE, i* TILE_SIZE, TILE_SIZE, TILE_SIZE));
 			window.draw(tile);
 		}
 	}
+}
+void Map::GetMapSize(int &x, int &y)
+{
+	x = map[0].size();
+	y = map.size();
 }

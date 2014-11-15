@@ -8,7 +8,6 @@
 #include <fstream>
 #include <sstream>
 
-
 class Player
 {
 public:
@@ -18,12 +17,15 @@ public:
 	void Draw(sf::RenderWindow& window);
 	void ProcessInput();
 	void Update();
+	void MapSize(int x, int y);
 private:
 	static const int TILE_SIZE = 32;
 	void Move(sf::Vector2i velocity);
 	void CheckCollision(float &x, float &y);
+	void CheckCameraBorder(float &x, float &y);
 	sf::Sprite sprite;
 	sf::Texture spriteTexture;
+	sf::View view;
 	enum DIRECTION
 	{
 	    DOWN = 0,
@@ -35,7 +37,8 @@ private:
 	sf::Vector2f velocity;
 	sf::Clock clock;
 	float frameCounter = 0, switchFrame = 100, frameSpeed = 500;
-
+	int mapx;
+	int mapy;
 
 };
 #endif

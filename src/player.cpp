@@ -9,6 +9,9 @@ void Player::Init(sf::Vector2i screenDimensions)
 	source = sf::Vector2i(1, DOWN);
 	velocity = sf::Vector2f(0,0);
 	sprite.setPosition(120,450);
+	// Camera Init
+	view.reset(sf::FloatRect(100, 100, 800, 600));
+	view.setViewport(sf::FloatRect(0.f, 0.f, 1.f, 1.f));
 }
 
 void Player::Draw(sf::RenderWindow& window)
@@ -23,7 +26,11 @@ void Player::Draw(sf::RenderWindow& window)
 			if(source.x * 32 >= spriteTexture.getSize().x)
 				source.x = 0;
 		}
+	sf::Vector2f pos = GetPos();
+	CheckCameraBorder(pos.x,pos.y);
+	view.setCenter(pos.x,pos.y);
 	window.draw(sprite);
+	window.setView(view);
 }
 
 void Player::ProcessInput()
@@ -76,16 +83,35 @@ void Player::CheckCollision(float &x, float &y)
 	{
 		y = 0;
 	}
-	if ( x > 800 - TILE_SIZE )
+	if ( x > ((mapx * TILE_SIZE) - TILE_SIZE))
 	{
-		x = 800 - TILE_SIZE;
+		x = ((mapx * TILE_SIZE) - TILE_SIZE);
 	}
-	if ( y > 600 - TILE_SIZE )
+	if ( y > (mapy * TILE_SIZE) - TILE_SIZE )
 	{
-		y = 600 - TILE_SIZE;
+		y = (mapy * TILE_SIZE) - TILE_SIZE;
 	}
 }
+void Player::CheckCameraBorder(float &x, float &y)
+{
 
+	if(x < 400 )
+	{
+		x = 400;
+	}
+	if(y < 300)
+	{
+		y = 300;
+	}
+	if(x > (mapx * TILE_SIZE - 400))
+	{
+		x = (mapx * TILE_SIZE - 400);
+	}
+	if(y > (mapy * TILE_SIZE - 300))
+	{
+		y = (mapy * TILE_SIZE - 300);
+	}
+}
 sf::Vector2f Player::GetPos()
 {
 	return sprite.getPosition();
@@ -96,3 +122,8 @@ void Player::SetPos(int posx, int posy, int dir) //Should be for TP's and such
 
 }
 
+void Player::MapSize(int x, int y) // Used for CheckCollision
+{
+	mapx = x;
+	mapy = y;
+}
