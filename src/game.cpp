@@ -16,7 +16,6 @@ void Game::Run()
 	map1.LoadMap("Maps/Map1.1.txt");
 	map2.LoadMap("Maps/Map1.2.txt");
 	player.Init(screenDimensions);
-	clock.restart();
 	/*End Of Initialize*/
 
 	// Load Main Menu
@@ -27,7 +26,6 @@ void Game::Run()
 	{
 		if( State == PLAYING )
 		{
-			clock.restart();
 			Update();
 			Draw();
 		}
