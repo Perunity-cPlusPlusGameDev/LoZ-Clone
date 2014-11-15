@@ -14,7 +14,7 @@ class Player
 public:
 	void Init(sf::Vector2i screenDimensions);
 	void SetPos(int posx, int posy, int dir);
-	sf::Vector2i GetPos();
+	sf::Vector2f GetPos();
 	void Draw(sf::RenderWindow& window);
 	void ProcessInput();
 	void Update();

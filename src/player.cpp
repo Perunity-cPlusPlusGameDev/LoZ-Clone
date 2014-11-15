@@ -59,12 +59,14 @@ void Player::ProcessInput()
 
 void Player::Update()
 {
+	sf::Vector2f pos = GetPos();
+	CheckCollision(pos.x, pos.y);
+	sprite.setPosition(pos.x, pos.y);
 	sprite.move(velocity.x, velocity.y);
 }
 
 void Player::CheckCollision(float &x, float &y)
 {
-	/*
 	if ( x < 0 )
 	{
 		x = 0;
@@ -81,12 +83,11 @@ void Player::CheckCollision(float &x, float &y)
 	{
 		y = 600 - TILE_SIZE;
 	}
-	*/
 }
 
-sf::Vector2i Player::GetPos()
+sf::Vector2f Player::GetPos()
 {
-	//return
+	return sprite.getPosition();
 }
 
 void Player::SetPos(int posx, int posy, int dir) //Should be for TP's and such
