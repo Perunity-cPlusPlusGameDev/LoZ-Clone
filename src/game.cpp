@@ -1,15 +1,9 @@
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-
 #include "game.h"
 
 void Game::Run()
 {
 	/*Initialize*/
-	State = MAINMENU;
+	State = GAMESTATE::MAINMENU;
 	screenDimensions = sf::Vector2i(800, 600);
 	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Zelda Clone");
 	map.LoadMap("Maps/Map1.txt"); // Improve the way we handle maps
@@ -24,7 +18,7 @@ void Game::Run()
 	//Main Loop
 	while (window.isOpen())
 	{
-		if( State == PLAYING)
+		if( State == GAMESTATE::PLAYING)
 		{
 			Update();
 			Draw();
@@ -64,12 +58,12 @@ void Game::ProcessEvents()
 			window.close();
 			break;
 			case sf::Event::LostFocus:
-			if(State == PLAYING)
-				State = PAUSED;
+			if(State == GAMESTATE::PLAYING)
+				State = GAMESTATE::PAUSED;
 			break;
 			case sf::Event::GainedFocus:
-			if(State == PAUSED)
-				State = PLAYING;
+			if(State == GAMESTATE::PAUSED)
+				State = GAMESTATE::PLAYING;
 			break;
 
 
@@ -84,14 +78,18 @@ void Game::ProcessInput()
 {
 	player.ProcessInput();
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R) && (State != PLAYING))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R) && (State != GAMESTATE::PLAYING))
 	{
-		State = PLAYING;
+		State = GAMESTATE::PLAYING;
 		std::cout << "State: Playing" << std::endl;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::X) && (State != PLAYING))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::X) && (State != GAMESTATE::PLAYING))
 	{
 		window.close();
+	}
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (State != GAMESTATE::PLAYING))
+	{
+		menu.Settings();
 	}
 
 }

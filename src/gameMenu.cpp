@@ -19,7 +19,8 @@ void gameMenu::LoadMenu(const std::string& fileName, sf::RenderWindow &window, i
 
 	window.clear();
 	window.draw(mainMenu);
-	MakeText("Press R to start", window, x/2, y-100);
+	MakeText("Press R to start", window, x/2, y-150);
+	MakeText("Press S to go setting", window, x/2, y-100);
 	MakeText("Press X to exit", window, x/2, y-50);
 	window.display();
 	std::cout << "Texture loaded!\n";
@@ -38,4 +39,8 @@ void gameMenu::MakeText(std::string btnName, sf::RenderWindow &window, int x, in
 	gameText.setOrigin(textRect.width / 2, textRect.height / 2);
 	gameText.setPosition(fontPosition);
 	window.draw(gameText);
+}
+void gameMenu::Settings()
+{
+	windowSetting.create(sf::VideoMode(400, 400), "Settings", sf::Style::Titlebar);
 }

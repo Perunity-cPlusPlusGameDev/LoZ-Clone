@@ -8,7 +8,7 @@ void Player::Init(sf::Vector2i screenDimensions)
 	std::cout << "Player texture Loaded!" << std::endl;
 	source = sf::Vector2i(1, DOWN);
 	velocity = sf::Vector2f(0,0);
-	sprite.setPosition(100,100);
+	sprite.setPosition(120,450);
 }
 
 void Player::Draw(sf::RenderWindow& window)

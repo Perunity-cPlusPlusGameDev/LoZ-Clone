@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <SFML/Window.hpp>
 #include <string>
 #include <iostream>
 
@@ -12,12 +13,14 @@ class gameMenu
 {
 public:
 	void LoadMenu(const std::string& fileName, sf::RenderWindow &window, int x, int y);
+	void Settings();
 private:
 	sf::Music music;
 	sf::Sprite mainMenu;
 	sf::Texture mainMenuTexture;
 	sf::Font gameFont;
 	sf::Text gameText;
+	sf::RenderWindow windowSetting;
 	void MakeText(std::string btnName, sf::RenderWindow &window, int x, int y);
 };
 #endif

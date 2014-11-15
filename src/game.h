@@ -6,7 +6,15 @@
 #include "player.h"
 #include "gameMenu.h"
 #include "map.h"
-
+namespace GAMESTATE
+{
+	enum
+	{
+		MAINMENU = 0,
+		PLAYING = 1,
+		PAUSED = 2,
+	};
+}
 class Game
 {
 public:
@@ -25,11 +33,6 @@ private:
 	Map map1;
 	Map map2;
 	int State;
-	enum GAMESTATE
-	{
-		MAINMENU = 0,
-		PLAYING = 1,
-		PAUSED = 2,
-	};
+
 };
 #endif
