@@ -1,118 +1,70 @@
 #include "player.h"
 
-void Player::Run(sf::Vector2i screenDimensions)
+void Player::Init(sf::Vector2i screenDimensions)
 {
-	int i = 50;
-	int direction = 1;
-
-	if(!tileTexture.loadFromFile("Textures/image.png"))
-		std::cout << "Texture file cannot be found!" << std::endl;
-	tile.setTexture(tileTexture);
-	// default position
-	std::cout << "Texture Loaded!" << std::endl;
-
-
-	 // set up the animations for all four directions (set spritesheet and push frames)
-
-    walkingAnimationDown.setSpriteSheet(tileTexture);
-    walkingAnimationDown.addFrame(sf::IntRect( 0 * TILE_SIZE, 0 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
-    walkingAnimationDown.addFrame(sf::IntRect( 1 * TILE_SIZE, 0 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
-    walkingAnimationDown.addFrame(sf::IntRect( 2 * TILE_SIZE, 0 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
-
-
-    walkingAnimationLeft.setSpriteSheet(tileTexture);
-    walkingAnimationLeft.addFrame(sf::IntRect( 0 * TILE_SIZE, 1 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
-    walkingAnimationLeft.addFrame(sf::IntRect( 1 * TILE_SIZE, 1 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
-    walkingAnimationLeft.addFrame(sf::IntRect( 2 * TILE_SIZE, 1 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
-
-
-    walkingAnimationRight.setSpriteSheet(tileTexture);
-    walkingAnimationRight.addFrame(sf::IntRect( 0 * TILE_SIZE, 2 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
-    walkingAnimationRight.addFrame(sf::IntRect( 1 * TILE_SIZE, 2 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
-    walkingAnimationRight.addFrame(sf::IntRect( 2 * TILE_SIZE, 2 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
-
-
-    walkingAnimationUp.setSpriteSheet(tileTexture);
-    walkingAnimationUp.addFrame(sf::IntRect( 0 * TILE_SIZE, 3 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
-    walkingAnimationUp.addFrame(sf::IntRect( 1 * TILE_SIZE, 3 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
-    walkingAnimationUp.addFrame(sf::IntRect( 2 * TILE_SIZE, 3 * TILE_SIZE, TILE_SIZE, TILE_SIZE));
-
-
-
-    // set up AnimatedSprite
-    AnimatedSprite animatedsprite(sf::seconds(0.2), true, false);
-
-    speed = 80.f;
-    noKeyWasPressed = true;
+	if(!spriteTexture.loadFromFile("Textures/image.png"))
+		std::cout << "Player texture file cannot be found!" << std::endl;
+	sprite.setTexture(spriteTexture);
+	std::cout << "Player texture Loaded!" << std::endl;
+	source = sf::Vector2i(1, DOWN);
+	velocity = sf::Vector2f(0,0);
+	sprite.setPosition(100,100);
 }
 
-void Player::Render()
+void Player::Draw(sf::RenderWindow& window)
 {
-
-}
-
-void Player::Update()
-{
-
-}
-
-void Player::LoadPlayer()
-{
-
-}
-
-void Player::DrawPlayer(sf::RenderWindow& window)
-{
-    frameTime = frameClock.restart();
-    sf::Vector2f movement(0.f, 0.f);
-	if ( direction == 0 )
-	{
-		currentAnimation = &walkingAnimationUp;
-        movement.y -= speed;
-        noKeyWasPressed = false;
-	}
-	else if ( direction == 1 )
-	{
-		currentAnimation = &walkingAnimationDown;
-        movement.y += speed;
-        noKeyWasPressed = false;
-	}
-	else if (direction == 2 )
-	{
-		currentAnimation = &walkingAnimationLeft;
-        movement.x -= speed;
-        noKeyWasPressed = false;
-	}
-	else if ( direction == 3 )
-	{
-		currentAnimation = &walkingAnimationRight;
-        movement.x += speed;
-        noKeyWasPressed = false;
-	}
-	// Get player current position and check collision
-	sf::Vector2f position = animatedsprite.getPosition();
-	CheckCollision(position.x, position.y);
-	animatedsprite.setPosition(position);
-
-	animatedsprite.play(*currentAnimation);
-    animatedsprite.move(movement * frameTime.asSeconds());
-
-	if (noKeyWasPressed)
-    {
-        animatedsprite.stop();
-    }
- 	noKeyWasPressed = true;
-	animatedsprite.update(frameTime);
-	window.draw(animatedsprite);
+	sprite.setTextureRect(sf::IntRect(source.x * 32, source.y * 32, 32, 32));
+	frameCounter += frameSpeed * clock.restart().asSeconds();
+		if (frameCounter >= switchFrame)
+		{
+			frameCounter = 0;
+			source.x++;
+			if(source.x * 32 >= spriteTexture.getSize().x)
+				source.x = 0;
+		}
+	window.draw(sprite);
 }
 
 void Player::ProcessInput()
 {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	{
+		source.y = UP;
+		velocity.y = -0.1f;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	{
+		source.y = DOWN;
+		velocity.y = 0.1f;
+	}
+	else
+	{
+		velocity.y = 0.0f;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	{
+		source.y = LEFT;
+		velocity.x = -0.1f;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	{
+		source.y = RIGHT;
+		velocity.x = 0.1f;
+	}
+	else
+	{
+		velocity.x = 0.0f;
+	}
+}
 
+void Player::Update()
+{
+	sprite.move(velocity.x, velocity.y);
 }
 
 void Player::CheckCollision(float &x, float &y)
 {
+	/*
 	if ( x < 0 )
 	{
 		x = 0;
@@ -129,26 +81,16 @@ void Player::CheckCollision(float &x, float &y)
 	{
 		y = 600 - TILE_SIZE;
 	}
+	*/
 }
 
-void Player::Move()
+sf::Vector2i Player::GetPos()
 {
-
+	//return
 }
 
-void Player::GetPos(int &posX, int &posY)
+void Player::SetPos(int posx, int posy, int dir) //Should be for TP's and such
 {
-	posX = x;
-	posY = y;
-}
 
-void Player::SetPos(int posx, int posy, int speed, int dir)
-{
-	direction = dir;
-
-	// doesn't work with animation
-	//x += posx * speed;
-	//y += posy * speed;
-	//CheckCollision();
 }
 

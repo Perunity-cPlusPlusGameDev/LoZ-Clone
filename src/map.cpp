@@ -7,7 +7,7 @@ void Map::Run()
 void Map::LoadMap(const std::string& fileName)
 {
 	if(!tileTexture.loadFromFile("Textures/RPGpack_sheet.png")){
-		std::cout << "Texture file cannot be found!" << std::endl;
+		std::cout << "Map texture file cannot be found!" << std::endl;
 	}
 	tile.setTexture(tileTexture);
 
@@ -53,7 +53,7 @@ void Map::LoadMap(const std::string& fileName)
 	std::cout << "Map Loaded!" << std::endl;
 }
 
-void Map::DrawMap(sf::RenderWindow &window)
+void Map::Draw(sf::RenderWindow &window)
 {
 	for (int i = 0; i < map.size(); i++)
 	{

@@ -6,41 +6,32 @@
 
 #include "game.h"
 
-//Nick's github test comment! :D yes
 void Game::Run()
 {
+	/*Initialize*/
 	State = MAINMENU;
 	screenDimensions = sf::Vector2i(800, 600);
 	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Zelda Clone");
-
-	// Load First Map
-	// To do: fix
-	map.LoadMap("Maps/Map1.txt");
+	map.LoadMap("Maps/Map1.txt"); // Improve the way we handle maps
 	map1.LoadMap("Maps/Map1.1.txt");
 	map2.LoadMap("Maps/Map1.2.txt");
-
-	player.Run(screenDimensions);
-
-	speed = 10;
-
-	timePerFrame = sf::milliseconds(16);
-	timer.restart();
+	player.Init(screenDimensions);
+	clock.restart();
+	/*End Of Initialize*/
 
 	// Load Main Menu
 	menu.LoadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
+
+	//Main Loop
 	while (window.isOpen())
 	{
 		if( State == PLAYING )
 		{
-			if (timePerFrame <= timer.getElapsedTime())
-			{
-				timer.restart();
-
-				Update();
-				Render();
-			}
+			clock.restart();
+			Update();
+			Draw();
 		}
-		//ProcessEvents();
+		ProcessEvents();
 		ProcessInput();
 	}
 }
@@ -49,17 +40,18 @@ void Game::Run()
 
 void Game::Update()
 {
-
+	player.Update();
 }
 
-void Game::Render()
+void Game::Draw()
 {
 	window.clear();
-	// To do: fix
-	map.DrawMap(window);
-	map1.DrawMap(window);
-	map2.DrawMap(window);
-	player.DrawPlayer(window);
+
+	map.Draw(window);
+	player.Draw(window);
+	map1.Draw(window);
+	map2.Draw(window);
+
 	window.display();
 }
 
@@ -83,38 +75,17 @@ void Game::ProcessEvents()
 
 void Game::ProcessInput()
 {
-	sf::Event event;
-	while(window.pollEvent(event))
+	player.ProcessInput();
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R) && (State != PLAYING))
 	{
-		//What's the best way to implement this? -Bahbi
-		if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::W)
-		{
-			player.SetPos(0, -1, speed, UP);
-		}
-		else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S)
-		{
-			player.SetPos(0, 1, speed, DOWN);
-		}
-		else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::A)
-		{
-			player.SetPos(-1, 0, speed, LEFT);
-		}
-		else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::D)
-		{
-			player.SetPos(1, 0, speed, RIGHT);
-		}
-		else if(event.type == sf::Event::KeyReleased)
-		{
-			player.SetPos(0, 0, speed, STOP);
-		}
-		else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R)
-		{
-			State = PLAYING;
-		}
-		if(event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::X))
-		{
-			window.close();
-		}
+		State = PLAYING;
+		std::cout << "State: Playing" << std::endl;
 	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::X) && (State != PLAYING))
+	{
+		window.close();
+	}
+
 }
 

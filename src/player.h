@@ -8,41 +8,34 @@
 #include <fstream>
 #include <sstream>
 
-#include "animatedsprite.h"
 
 class Player
 {
 public:
-	void Run(sf::Vector2i screenDimensions);
-	void SetPos(int posx, int posy, int speed, int dir);
-	void GetPos(int &posX, int &posY);
-
-	void DrawPlayer(sf::RenderWindow& window);
+	void Init(sf::Vector2i screenDimensions);
+	void SetPos(int posx, int posy, int dir);
+	sf::Vector2i GetPos();
+	void Draw(sf::RenderWindow& window);
+	void ProcessInput();
+	void Update();
 private:
 	static const int TILE_SIZE = 32;
-	void Render();
-	void Update();
-	void LoadPlayer();
-	void ProcessInput();
-	void Move();
+	void Move(sf::Vector2i velocity);
 	void CheckCollision(float &x, float &y);
-	sf::Sprite tile;
-	sf::Texture tileTexture;
-	int x;
-	int y;
-	int direction;
+	sf::Sprite sprite;
+	sf::Texture spriteTexture;
+	enum DIRECTION
+	{
+	    DOWN = 0,
+	    LEFT = 1,
+	    RIGHT = 2,
+	    UP = 3
+	};
+	sf::Vector2i source;
+	sf::Vector2f velocity;
+	sf::Clock clock;
+	float frameCounter = 0, switchFrame = 100, frameSpeed = 500;
 
-	Animation walkingAnimationDown;
-	Animation walkingAnimationLeft;
-	Animation walkingAnimationRight;
-	Animation walkingAnimationUp;
-	Animation* currentAnimation = &walkingAnimationDown;
-	AnimatedSprite animatedsprite;
-	sf::Clock frameClock;
-	sf::Time frameTime;
-
-	float speed;
-    bool noKeyWasPressed;
 
 };
 #endif

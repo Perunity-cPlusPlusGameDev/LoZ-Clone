@@ -13,7 +13,7 @@ class Map
 public:
 	void Run();
 	void LoadMap(const std::string& fileName);
-	void DrawMap(sf::RenderWindow &window);
+	void Draw(sf::RenderWindow &window);
 	void PrintTileSheet(sf::RenderWindow &window);
 private:
 	static const int TILE_SIZE = 32;
