@@ -24,7 +24,7 @@ void Game::Run()
 	//Main Loop
 	while (window.isOpen())
 	{
-		if( State == PLAYING )
+		if( State == PLAYING)
 		{
 			Update();
 			Draw();
@@ -63,6 +63,15 @@ void Game::ProcessEvents()
 			case sf::Event::Closed:
 			window.close();
 			break;
+			case sf::Event::LostFocus:
+			if(State == PLAYING)
+				State = PAUSED;
+			break;
+			case sf::Event::GainedFocus:
+			if(State == PAUSED)
+				State = PLAYING;
+			break;
+
 
 			default:
 			//std::cout << "An event has fired which hasn't been added to the process list" << std::endl;

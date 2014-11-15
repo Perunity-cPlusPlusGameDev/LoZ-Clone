@@ -30,12 +30,12 @@ void Player::ProcessInput()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
 		source.y = UP;
-		velocity.y = -0.1f;
+		velocity.y = -0.05f;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		source.y = DOWN;
-		velocity.y = 0.1f;
+		velocity.y = 0.05f;
 	}
 	else
 	{
@@ -44,12 +44,12 @@ void Player::ProcessInput()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		source.y = LEFT;
-		velocity.x = -0.1f;
+		velocity.x = -0.05f;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		source.y = RIGHT;
-		velocity.x = 0.1f;
+		velocity.x = 0.05f;
 	}
 	else
 	{
