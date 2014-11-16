@@ -44,5 +44,21 @@ void gameMenu::MakeText(std::string btnName, sf::RenderWindow &window, int x, in
 }
 void gameMenu::Settings()
 {
-	windowSetting.create(sf::VideoMode(400, 400), "Settings", sf::Style::Titlebar);
+	windowSetting.create(sf::VideoMode(400, 400), "Settings", sf::Style::Close);
+}
+void gameMenu::ProcessEvents()
+{
+	sf::Event event;
+	while(windowSetting.pollEvent(event))
+	{
+		switch(event.type)
+		{
+			case sf::Event::Closed:
+			windowSetting.close();
+			break;
+			default:
+			//std::cout << "An event has fired which hasn't been added to the process list" << std::endl;
+			break;
+		}
+	}
 }

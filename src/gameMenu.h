@@ -14,6 +14,7 @@ class gameMenu
 public:
 	void LoadMenu(const std::string& fileName, sf::RenderWindow &window, int x, int y);
 	void Settings();
+	void ProcessEvents();
 private:
 	sf::Music music;
 	sf::Sprite mainMenu;

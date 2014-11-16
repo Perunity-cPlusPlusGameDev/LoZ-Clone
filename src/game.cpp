@@ -40,6 +40,7 @@ void Game::Run()
 			Update(dt);
 			Draw();
 		}
+		menu.ProcessEvents();
 		ProcessEvents();
 		ProcessInput();
 	}
