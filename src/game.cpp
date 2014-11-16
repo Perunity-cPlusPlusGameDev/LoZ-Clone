@@ -23,7 +23,8 @@ void Game::Run()
 	{
 		if( State == GAMESTATE::PLAYING)
 		{
-			Update();
+			dt = deltaClock.restart();
+			Update(dt);
 			Draw();
 		}
 		ProcessEvents();
@@ -31,11 +32,11 @@ void Game::Run()
 	}
 }
 
-void Game::Update()
+void Game::Update(sf::Time _dt)
 {
 	npc1.Update();
 	npc2.Update();
-	player.Update();
+	player.Update(_dt);
 }
 
 void Game::Draw()
