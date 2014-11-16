@@ -6,7 +6,8 @@ void Map::Run()
 }
 void Map::LoadMap(const std::string& fileName)
 {
-	if(!tileTexture.loadFromFile("Textures/RPGpack_sheet.png")){
+	if(!tileTexture.loadFromFile("Textures/RPGpack_sheet.png"))
+	{
 		std::cout << "Map texture file cannot be found!" << std::endl;
 	}
 	tile.setTexture(tileTexture);
@@ -26,14 +27,6 @@ void Map::LoadMap(const std::string& fileName)
 			std::stringstream stream(line);
 			while (std::getline(stream, value, ' '))
 			{
-				/*if (value.length() == 2)
-				{
-					int x = atoi(value.substr(0, 1).c_str());
-					int y = atoi(value.substr(1, 2).c_str());
-
-					tempMap.push_back(sf::Vector2i(x, y));
-				}
-				else*/
 				if (value.length() == 4)
 				{
 					int x = atoi(value.substr(0, 2).c_str());
@@ -67,7 +60,8 @@ void Map::Draw(sf::RenderWindow &window)
 }
 void Map::PrintTileSheet(sf::RenderWindow &window)
 {
-	if(!tileTexture.loadFromFile("Textures/RPGpack_sheet.png")){
+	if(!tileTexture.loadFromFile("Textures/RPGpack_sheet.png"))
+	{
 		std::cout << "Texture file cannot be found!" << std::endl;
 	}
 	tile.setTexture(tileTexture);

@@ -11,6 +11,8 @@ void Game::Run()
 	map1.LoadMap("Maps/Map1.1.txt");
 	map2.LoadMap("Maps/Map1.2.txt");
 	player.Init(screenDimensions);
+	npc1.Init(screenDimensions, 120, 420, "npc1");
+	npc2.Init(screenDimensions, 160, 420, "npc2");
 	/*End Of Initialize*/
 	player.MapSize(map.GetMapSize());// Pass x and y from map to player
 	// Load Main Menu
@@ -31,6 +33,8 @@ void Game::Run()
 
 void Game::Update()
 {
+	npc1.Update();
+	npc2.Update();
 	player.Update();
 }
 
@@ -39,6 +43,8 @@ void Game::Draw()
 	window.clear();
 
 	map.Draw(window);
+	npc2.Draw(window);
+	npc1.Draw(window);
 	player.Draw(window);
 	map1.Draw(window);
 	map2.Draw(window);

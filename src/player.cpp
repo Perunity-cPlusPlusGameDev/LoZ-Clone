@@ -3,7 +3,9 @@
 void Player::Init(sf::Vector2i screenDimensions)
 {
 	if(!spriteTexture.loadFromFile("Textures/image.png"))
+	{
 		std::cout << "Player texture file cannot be found!" << std::endl;
+	}
 	sprite.setTexture(spriteTexture);
 	std::cout << "Player texture Loaded!" << std::endl;
 	source = sf::Vector2i(1, DOWN);
@@ -22,9 +24,13 @@ void Player::Draw(sf::RenderWindow& window)
 		{
 			frameCounter = 0;
 			if(velocity != sf::Vector2f(0,0))
+			{
 				source.x++;
+			}
 			if(source.x * 32 >= spriteTexture.getSize().x)
+			{
 				source.x = 0;
+			}
 		}
 	sf::Vector2f pos = GetPos();
 	CheckCameraBorder(pos.x,pos.y);

@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "player.h"
+#include "npc.h"
 #include "gameMenu.h"
 #include "map.h"
 namespace GAMESTATE
@@ -28,6 +29,8 @@ private:
 	sf::RenderWindow window;
 	sf::Vector2i screenDimensions;
 	Player player;
+	Npc npc1;
+	Npc npc2;
 	gameMenu menu;
 	Map map;
 	Map map1;
