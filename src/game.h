@@ -7,6 +7,7 @@
 #include "npc.h"
 #include "gameMenu.h"
 #include "map.h"
+#include "npcManager.h"
 namespace GAMESTATE
 {
 	enum
@@ -26,8 +27,8 @@ private:
 	void Draw();
 	void ProcessEvents();
 	void ProcessInput();
-	sf::RenderWindow window;
-	sf::Vector2i screenDimensions;
+	sf::RenderWindow window
+;	sf::Vector2i screenDimensions;
 	Player player;
 	Npc npc1;
 	Npc npc2;
@@ -38,5 +39,6 @@ private:
 	int State;
 	sf::Time dt;
 	sf::Clock deltaClock;
+	NpcManager npcManager;
 };
 #endif
