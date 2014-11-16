@@ -92,7 +92,7 @@ void Game::ProcessInput()
 	{
 		window.close();
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (State != GAMESTATE::PLAYING))
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (State == GAMESTATE::MAINMENU))
 	{
 		menu.Settings();
 	}
