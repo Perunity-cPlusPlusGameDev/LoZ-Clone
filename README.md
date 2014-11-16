@@ -19,5 +19,6 @@ People we love <3
      - Kim
      - eXpl0iter
      - tsjost
- -  Helped with vector bug
+ -  Helped with NPCs not displaying properly
      - Mooneye
+     - Nyrox
