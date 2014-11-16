@@ -9,8 +9,9 @@ class NpcManager
 public:
 	void Init();
 	void Draw(sf::RenderWindow& window);
-	void Update();
-	void CreateNPC(int x, int y, sf::Texture texture);
+	void Update(sf::Time dt);
+	void CreateNPC(int x, int y, sf::Texture& texture);
+	void ProcessInput();
 private:
 	std::vector<Npc> npcList;
 };
