@@ -1,8 +1,9 @@
 #include "Entity.h"
 
-void Entity::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture)
+void Entity::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture)
 {
-	sprite.setTexture(texture);
+	texture = _texture;
+	sprite.setTexture(_texture);
 	source = sf::Vector2i(1, DOWN);
 	velocity = sf::Vector2i(0,0);
 	sprite.setPosition(initPosX,initPosY);
@@ -18,7 +19,7 @@ void Entity::Draw(sf::RenderWindow& window)
 			frameCounter = 0;
 			if(velocity != sf::Vector2i(0,0))
 				source.x++;
-			if(source.x * 32 >= 96) //texture.getSize().x is empty for some reason
+			if(source.x * 32 >= texture.getSize().x)
 				source.x = 0;
 		}
 
