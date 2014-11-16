@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <vector>
 #include "npc.h"
 
 class NpcManager
@@ -11,6 +12,6 @@ public:
 	void Update();
 	void CreateNPC();
 private:
+	Npc npc;
 	std::vector<Npc> npcList;
-	sf::RenderWindow window;
 };

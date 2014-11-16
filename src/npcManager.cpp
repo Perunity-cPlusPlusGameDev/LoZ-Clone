@@ -22,7 +22,6 @@ void NpcManager::Update()
 
 void NpcManager::CreateNPC()
 {
-	Npc npc;
 	npc.Init(sf::Vector2i(800, 600), 120, 420, "npc1");
 	npcList.push_back(npc);
 }
