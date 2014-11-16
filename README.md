@@ -5,6 +5,10 @@ Team Members:
   - Tuckismad - Aaron
   - Elewook - Alexander
   - Spokenlore - Samson
+  - Shawn
+  - Nick
+  - Gabriel
+  - Bahbi
 
 People we love <3
 ------------------
@@ -15,3 +19,5 @@ People we love <3
      - Kim
      - eXpl0iter
      - tsjost
+ -  Helped with vector bug
+     - Mooneye
