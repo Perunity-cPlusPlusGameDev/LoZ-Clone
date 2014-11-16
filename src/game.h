@@ -42,5 +42,6 @@ private:
 	NpcManager npcManager;
 	sf::Texture texture;
 	sf::Texture texture2;
+	sf::Texture playerTexture;
 };
 #endif

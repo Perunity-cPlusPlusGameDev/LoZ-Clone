@@ -11,9 +11,9 @@ void Game::Run()
 	map.LoadMap("Maps/Map1.txt"); // Improve the way we handle maps
 	map1.LoadMap("Maps/Map1.1.txt");
 	map2.LoadMap("Maps/Map1.2.txt");
-	player.Init(screenDimensions, 120, 450, "image");
+
 	/*End Of Initialize*/
-	player.MapSize(map.GetMapSize());// Pass x and y from map to player
+
 	// Load Main Menu
 	menu.LoadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
 
@@ -22,6 +22,11 @@ void Game::Run()
 		std::cout << "NPC texture file cannot be found!" << std::endl;
 	if(!texture2.loadFromFile("Textures/npc2.png"))
 		std::cout << "NPC texture file cannot be found!" << std::endl;
+	if(!playerTexture.loadFromFile("Textures/image.png"))
+		std::cout << "Player texture file cannot be found!" << std::endl;
+
+	player.Init(screenDimensions, 124, 450, playerTexture);
+	player.MapSize(map.GetMapSize());// Pass x and y from map to player
 
 	//create npc
 	npcManager.CreateNPC(120, 420, texture);
