@@ -3,9 +3,7 @@
 void Player::Init(sf::Vector2i screenDimensions)
 {
 	if(!spriteTexture.loadFromFile("Textures/image.png"))
-	{
 		std::cout << "Player texture file cannot be found!" << std::endl;
-	}
 	sprite.setTexture(spriteTexture);
 	std::cout << "Player texture Loaded!" << std::endl;
 	source = sf::Vector2i(1, DOWN);
@@ -24,13 +22,9 @@ void Player::Draw(sf::RenderWindow& window)
 		{
 			frameCounter = 0;
 			if(velocity != sf::Vector2i(0,0))
-			{
 				source.x++;
-			}
 			if(source.x * 32 >= spriteTexture.getSize().x)
-			{
 				source.x = 0;
-			}
 		}
 	sf::Vector2f pos = GetPos();
 	CheckCameraBorder(pos.x,pos.y);
@@ -74,11 +68,9 @@ void Player::ProcessInput()
 void Player::Update(sf::Time dt)
 {
 	sprite.move(velocity.x * dt.asSeconds() ,velocity.y * dt.asSeconds());
-	//sf::Vector2f pos = GetPos();
-	//CheckCollision(pos.x, pos.y);
-	//sprite.setPosition(pos.x, pos.y);
-	//sprite.move(velocity.x, velocity.y);
-	//fix this - Azza
+	sf::Vector2f pos = GetPos();
+	CheckCollision(pos.x, pos.y);
+	sprite.setPosition(pos.x, pos.y);
 }
 
 void Player::CheckCollision(float &x, float &y)
