@@ -21,7 +21,7 @@ public:
 	void Run();
 private:
 	static const int TILE_SIZE = 32;
-	void Update();
+	void Update(sf::Time _dt);
 	void Draw();
 	void ProcessEvents();
 	void ProcessInput();
@@ -33,6 +33,8 @@ private:
 	Map map1;
 	Map map2;
 	int State;
+	sf::Time dt;
+	sf::Clock deltaClock;
 
 };
 #endif

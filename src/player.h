@@ -16,7 +16,7 @@ public:
 	sf::Vector2f GetPos();
 	void Draw(sf::RenderWindow& window);
 	void ProcessInput();
-	void Update();
+	void Update(sf::Time dt);
 	void MapSize(sf::Vector2i pos);
 private:
 	static const int TILE_SIZE = 32;
@@ -34,7 +34,7 @@ private:
 	    UP = 3
 	};
 	sf::Vector2i source;
-	sf::Vector2f velocity;
+	sf::Vector2i velocity;
 	sf::Clock clock;
 	float frameCounter = 0, switchFrame = 100, frameSpeed = 500;
 	int mapx;

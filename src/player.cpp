@@ -7,7 +7,7 @@ void Player::Init(sf::Vector2i screenDimensions)
 	sprite.setTexture(spriteTexture);
 	std::cout << "Player texture Loaded!" << std::endl;
 	source = sf::Vector2i(1, DOWN);
-	velocity = sf::Vector2f(0,0);
+	velocity = sf::Vector2i(0,0);
 	sprite.setPosition(120,450);
 	// Camera Init
 	view.reset(sf::FloatRect(100, 100, 800, 600));
@@ -21,7 +21,7 @@ void Player::Draw(sf::RenderWindow& window)
 		if (frameCounter >= switchFrame)
 		{
 			frameCounter = 0;
-			if(velocity != sf::Vector2f(0,0))
+			if(velocity != sf::Vector2i(0,0))
 				source.x++;
 			if(source.x * 32 >= spriteTexture.getSize().x)
 				source.x = 0;
@@ -38,39 +38,41 @@ void Player::ProcessInput()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
 		source.y = UP;
-		velocity.y = -0.05f;
+		velocity.y = -100;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		source.y = DOWN;
-		velocity.y = 0.05f;
+		velocity.y = 100;
 	}
 	else
 	{
-		velocity.y = 0.0f;
+		velocity.y = 0;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		source.y = LEFT;
-		velocity.x = -0.05f;
+		velocity.x = -100;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		source.y = RIGHT;
-		velocity.x = 0.05f;
+		velocity.x = 100;
 	}
 	else
 	{
-		velocity.x = 0.0f;
+		velocity.x = 0;
 	}
 }
 
-void Player::Update()
+void Player::Update(sf::Time dt)
 {
-	sf::Vector2f pos = GetPos();
-	CheckCollision(pos.x, pos.y);
-	sprite.setPosition(pos.x, pos.y);
-	sprite.move(velocity.x, velocity.y);
+	sprite.move(velocity.x * dt.asSeconds() ,velocity.y * dt.asSeconds());
+	//sf::Vector2f pos = GetPos();
+	//CheckCollision(pos.x, pos.y);
+	//sprite.setPosition(pos.x, pos.y);
+	//sprite.move(velocity.x, velocity.y);
+	//fix this - Azza
 }
 
 void Player::CheckCollision(float &x, float &y)
