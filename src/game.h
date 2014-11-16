@@ -40,5 +40,7 @@ private:
 	sf::Time dt;
 	sf::Clock deltaClock;
 	NpcManager npcManager;
+	sf::Texture texture;
+	sf::Texture texture2;
 };
 #endif

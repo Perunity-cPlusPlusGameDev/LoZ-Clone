@@ -1,11 +1,7 @@
 #include "npc.h"
 
-void Npc::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, std::string filename)
+void Npc::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture spriteTexture)
 {
-	if(!spriteTexture.loadFromFile("Textures/"+filename+".png"))
-	{
-		std::cout << "Npc texture file cannot be found!" << std::endl;
-	}
 	sprite.setTexture(spriteTexture);
 	std::cout << "Npc texture Loaded!" << std::endl;
 	source = sf::Vector2i(1, DOWN);

@@ -20,8 +20,9 @@ void NpcManager::Update()
 	}
 }
 
-void NpcManager::CreateNPC()
+void NpcManager::CreateNPC(int x, int y, sf::Texture texture)
 {
-	npc.Init(sf::Vector2i(800, 600), 120, 420, "npc1");
+	Npc npc;
+	npc.Init(sf::Vector2i(800, 600), x, y, texture);
 	npcList.push_back(npc);
 }

@@ -11,7 +11,7 @@
 class Npc
 {
 public:
-	void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, std::string filename);
+	void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture spriteTexture);
 	void SetPos(int posx, int posy, int dir);
 	sf::Vector2f GetPos();
 	void Draw(sf::RenderWindow& window);

@@ -18,7 +18,19 @@ void Game::Run()
 	player.MapSize(map.GetMapSize());// Pass x and y from map to player
 	// Load Main Menu
 	menu.LoadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
-	npcManager.CreateNPC();
+
+	//mock resource manager
+	if(!texture.loadFromFile("Textures/npc1.png"))
+		std::cout << "NPC texture file cannot be found!" << std::endl;
+	if(!texture2.loadFromFile("Textures/npc2.png"))
+		std::cout << "NPC texture file cannot be found!" << std::endl;
+
+	//create npc
+	npcManager.CreateNPC(120, 420, texture);
+	npcManager.CreateNPC(154, 420, texture);
+	npcManager.CreateNPC(188, 420, texture2);
+
+
 	//Main Loop
 	while (window.isOpen())
 	{

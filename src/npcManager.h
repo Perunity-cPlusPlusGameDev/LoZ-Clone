@@ -10,8 +10,7 @@ public:
 	void Init();
 	void Draw(sf::RenderWindow& window);
 	void Update();
-	void CreateNPC();
+	void CreateNPC(int x, int y, sf::Texture texture);
 private:
-	Npc npc;
 	std::vector<Npc> npcList;
 };
