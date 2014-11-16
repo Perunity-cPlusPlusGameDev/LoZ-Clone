@@ -7,11 +7,11 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-
+#include <string>
 class Player
 {
 public:
-	void Init(sf::Vector2i screenDimensions);
+	void Init(sf::Vector2i screenDimensions, int initPosX, int initPosxY, std::string filename);
 	void SetPos(int posx, int posy, int dir);
 	sf::Vector2f GetPos();
 	void Draw(sf::RenderWindow& window);

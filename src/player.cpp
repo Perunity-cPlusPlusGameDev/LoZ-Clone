@@ -1,14 +1,14 @@
 #include "player.h"
 
-void Player::Init(sf::Vector2i screenDimensions)
+void Player::Init(sf::Vector2i screenDimensions, int initPosX, int initPosxY, std::string filename)
 {
-	if(!spriteTexture.loadFromFile("Textures/image.png"))
+	if(!spriteTexture.loadFromFile("Textures/"+filename+".png"))
 		std::cout << "Player texture file cannot be found!" << std::endl;
 	sprite.setTexture(spriteTexture);
 	std::cout << "Player texture Loaded!" << std::endl;
 	source = sf::Vector2i(1, DOWN);
 	velocity = sf::Vector2i(0,0);
-	sprite.setPosition(120,450);
+	sprite.setPosition(initPosX,initPosxY);
 	// Camera Init
 	view.reset(sf::FloatRect(100, 100, 800, 600));
 	view.setViewport(sf::FloatRect(0.f, 0.f, 1.f, 1.f));

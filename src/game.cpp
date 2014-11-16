@@ -10,7 +10,7 @@ void Game::Run()
 	map.LoadMap("Maps/Map1.txt"); // Improve the way we handle maps
 	map1.LoadMap("Maps/Map1.1.txt");
 	map2.LoadMap("Maps/Map1.2.txt");
-	player.Init(screenDimensions);
+	player.Init(screenDimensions, 120, 450, "image");
 	npc1.Init(screenDimensions, 120, 420, "npc1");
 	npc2.Init(screenDimensions, 160, 420, "npc2");
 	/*End Of Initialize*/
