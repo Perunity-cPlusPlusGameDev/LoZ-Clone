@@ -10,7 +10,9 @@ void Game::Run()
 	map.LoadMap("Maps/Map1.txt"); // Improve the way we handle maps
 	map1.LoadMap("Maps/Map1.1.txt");
 	map2.LoadMap("Maps/Map1.2.txt");
-	player.Init(screenDimensions);
+	player.Init(screenDimensions, 120, 450);
+	npc.Init(screenDimensions, 120, 420, "npc1");
+	npc2.Init(screenDimensions, 150, 420, "npc2");
 	/*End Of Initialize*/
 	player.MapSize(map.GetMapSize());// Pass x and y from map to player
 	// Load Main Menu
@@ -29,17 +31,22 @@ void Game::Run()
 	}
 }
 
-void Game::Update()
-{
-	player.Update();
-}
 
+void Game::Update(sf::Time _dt)
+{
+	npc.Update();
+	npc2.Update();
+	player.Update(_dt);
+}
 void Game::Draw()
 {
 	window.clear();
 
 	map.Draw(window);
+	npc.Draw(window);
+	npc2.Draw(window);
 	player.Draw(window);
+
 	map1.Draw(window);
 	map2.Draw(window);
 	window.display();
@@ -53,21 +60,23 @@ void Game::ProcessEvents()
 		switch(event.type)
 		{
 			case sf::Event::Closed:
-			window.close();
-			break;
+				window.close();
+				break;
 			case sf::Event::LostFocus:
-			if(State == GAMESTATE::PLAYING)
-				State = GAMESTATE::PAUSED;
-			break;
+				if(State == GAMESTATE::PLAYING)
+				{
+					State = GAMESTATE::PAUSED;
+				}
+				break;
 			case sf::Event::GainedFocus:
-			if(State == GAMESTATE::PAUSED)
-				State = GAMESTATE::PLAYING;
-			break;
-
-
+				if(State == GAMESTATE::PAUSED)
+				{
+					State = GAMESTATE::PLAYING;
+				}
+				break;
 			default:
-			//std::cout << "An event has fired which hasn't been added to the process list" << std::endl;
-			break;
+				//std::cout << "An event has fired which hasn't been added to the process list" << std::endl;
+				break;
 		}
 	}
 }
@@ -85,7 +94,7 @@ void Game::ProcessInput()
 	{
 		window.close();
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (State != GAMESTATE::PLAYING))
+	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (State != GAMESTATE::PLAYING))
 	{
 		menu.Settings();
 	}

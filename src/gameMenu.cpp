@@ -2,15 +2,17 @@
 
 void gameMenu::LoadMenu(const std::string& fileName, sf::RenderWindow &window, int x, int y){
 	// Music
-    if (!music.openFromFile(fileName)){
-        return;
+    if (!music.openFromFile(fileName))
+    {
+        std::cout << "Musix file cannot be found!\n";
 	}
 	music.play();
 	music.setLoop(true);
 	std::cout << "Music Loaded\n";
 
 	// Main menu image
-	if(!mainMenuTexture.loadFromFile("Textures/800x600.jpg")){
+	if(!mainMenuTexture.loadFromFile("Textures/800x600.jpg"))
+	{
 		std::cout << "Texture file cannot be found!\n";
 	}
 	mainMenu.setTexture(mainMenuTexture);
@@ -30,7 +32,8 @@ void gameMenu::MakeText(std::string btnName, sf::RenderWindow &window, int x, in
 {
 	sf::Vector2f fontPosition(x, y);
 	sf::Font gameFont;
-	if(!gameFont.loadFromFile("Fonts/Triforce.ttf")){
+	if(!gameFont.loadFromFile("Fonts/Triforce.ttf"))
+	{
 		std::cout << "Font file cannot be found!\n";
 	}
 	sf::Text gameText(btnName, gameFont, 30);
