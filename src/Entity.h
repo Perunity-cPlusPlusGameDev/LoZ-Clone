@@ -10,12 +10,12 @@
 class Entity
 {
 public:
-	void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture);
+	void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture, sf::Vector2i mapSize);
 	void SetPos(int posx, int posy, int dir);
 	sf::Vector2f GetPos();
 	void Draw(sf::RenderWindow& window);
 	void Update(sf::Time dt);
-	void MapSize(sf::Vector2i pos);
+	//void MapSize(sf::Vector2i pos);
 
 protected:
 

@@ -25,13 +25,13 @@ void Game::Run()
 	if(!playerTexture.loadFromFile("Textures/image.png"))
 		std::cout << "Player texture file cannot be found!" << std::endl;
 
-	player.Init(screenDimensions, 124, 450, playerTexture);
-	player.MapSize(map.GetMapSize());// Pass x and y from map to player
+	player.Init(screenDimensions, 124, 450, playerTexture, map.GetMapSize());
+	//player.MapSize(map.GetMapSize());// Pass x and y from map to player
 
 	//create npc
-	npcManager.CreateNPC(120, 420, texture);
-	npcManager.CreateNPC(154, 420, texture);
-	npcManager.CreateNPC(188, 420, texture2);
+	npcManager.CreateNPC(120, 420, texture, map.GetMapSize());
+	npcManager.CreateNPC(154, 420, texture, map.GetMapSize());
+	npcManager.CreateNPC(188, 420, texture2, map.GetMapSize());
 
 
 	//Main Loop

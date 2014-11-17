@@ -13,7 +13,7 @@ class Player: public Entity
 public:
 	void ProcessInput();
 	void Draw(sf::RenderWindow& window);
-	void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture);
+	void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture, sf::Vector2i mapSize);
 private:
 	void CheckCameraBorder(float &x, float &y);
 

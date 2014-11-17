@@ -1,18 +1,19 @@
 #include "Entity.h"
 
-void Entity::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture)
+void Entity::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize)
 {
 	texture = _texture;
 	sprite.setTexture(_texture);
 	source = sf::Vector2i(1, DOWN);
 	velocity = sf::Vector2i(0,0);
 	sprite.setPosition(initPosX,initPosY);
+	map = mapSize;
 	std::cout << "Starting Position X:" << initPosX << " Y:" << initPosY << std::endl;
 }
 
 void Entity::Draw(sf::RenderWindow& window)
 {
-	std::cout << "Cur Position X:" << sprite.getPosition().x << " Y:" << sprite.getPosition().y << std::endl;
+//	std::cout << "Cur Position X:" << sprite.getPosition().x << " Y:" << sprite.getPosition().y << std::endl;
 	sprite.setTextureRect(sf::IntRect(source.x * 32, source.y * 32, 32, 32));
 	frameCounter += frameSpeed * clock.restart().asSeconds();
 
@@ -65,8 +66,8 @@ void Entity::SetPos(int posx, int posy, int dir) //Should be for TP's and such
 
 }
 
-void Entity::MapSize(sf::Vector2i pos) // Used for CheckCollision
-{
-	map.x = pos.x;
-	map.y = pos.y;
-}
+//void Entity::MapSize(sf::Vector2i pos) // Used for CheckCollision
+//{
+//	map.x = pos.x;
+//	map.y = pos.y;
+//}
