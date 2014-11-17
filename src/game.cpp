@@ -16,7 +16,7 @@ void Game::Run()
 	/*End Of Initialize*/
 
 	// Load Main Menu
-	menu.LoadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
+	menu.LoadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y, gui);
 
 	//mock resource manager
 	if(!texture.loadFromFile("Textures/npc1.png"))

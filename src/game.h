@@ -8,6 +8,7 @@
 #include "gameMenu.h"
 #include "map.h"
 #include "npcManager.h"
+#include "gui.h"
 namespace GAMESTATE
 {
 	enum
@@ -27,8 +28,8 @@ private:
 	void Draw();
 	void ProcessEvents();
 	void ProcessInput();
-	sf::RenderWindow window
-;	sf::Vector2i screenDimensions;
+	sf::RenderWindow window;
+	sf::Vector2i screenDimensions;
 	Player player;
 	Npc npc1;
 	Npc npc2;
@@ -44,5 +45,6 @@ private:
 	sf::Texture texture2;
 	sf::Texture playerTexture;
 	bool DrawHouse = true;
+	Gui gui;
 };
 #endif
