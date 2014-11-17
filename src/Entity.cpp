@@ -7,10 +7,12 @@ void Entity::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf:
 	source = sf::Vector2i(1, DOWN);
 	velocity = sf::Vector2i(0,0);
 	sprite.setPosition(initPosX,initPosY);
+	std::cout << "Starting Position X:" << initPosX << " Y:" << initPosY << std::endl;
 }
 
 void Entity::Draw(sf::RenderWindow& window)
 {
+	std::cout << "Cur Position X:" << sprite.getPosition().x << " Y:" << sprite.getPosition().y << std::endl;
 	sprite.setTextureRect(sf::IntRect(source.x * 32, source.y * 32, 32, 32));
 	frameCounter += frameSpeed * clock.restart().asSeconds();
 
@@ -22,8 +24,6 @@ void Entity::Draw(sf::RenderWindow& window)
 			if(source.x * 32 >= texture.getSize().x)
 				source.x = 0;
 		}
-
-	sf::Vector2f pos = GetPos();
 	window.draw(sprite);
 }
 
@@ -45,17 +45,14 @@ void Entity::CheckCollision(float &x, float &y)
 	{
 		y = 0;
 	}
-	/*
-	if ( x > ((mapx * TILE_SIZE) - TILE_SIZE))
+	if ( x > ((map.x * TILE_SIZE) - TILE_SIZE))
 	{
-		x = ((mapx * TILE_SIZE) - TILE_SIZE);
+		x = ((map.x * TILE_SIZE) - TILE_SIZE);
 	}
-	if ( y > (mapy * TILE_SIZE) - TILE_SIZE )
+	if ( y > (map.y * TILE_SIZE) - TILE_SIZE )
 	{
-		y = (mapy * TILE_SIZE) - TILE_SIZE;
+		y = (map.y * TILE_SIZE) - TILE_SIZE;
 	}
-	something here isnt working well
-	*/
 }
 
 sf::Vector2f Entity::GetPos()
@@ -70,6 +67,6 @@ void Entity::SetPos(int posx, int posy, int dir) //Should be for TP's and such
 
 void Entity::MapSize(sf::Vector2i pos) // Used for CheckCollision
 {
-	mapx = pos.x;
-	mapy = pos.y;
+	map.x = pos.x;
+	map.y = pos.y;
 }

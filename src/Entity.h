@@ -39,7 +39,6 @@ protected:
 	sf::Vector2i velocity;
 	sf::Clock clock;
 	float frameCounter = 0, switchFrame = 100, frameSpeed = 500;
-	int mapx;
-	int mapy;
+	sf::Vector2i map;
 
 };

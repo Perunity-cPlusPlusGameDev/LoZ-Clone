@@ -1,8 +1,9 @@
 #include "player.h"
 
-/*
-void Player::Init()
+
+void Player::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture)
 {
+	Entity::Init(screenDimensions, initPosX, initPosY, texture);
 	// Camera Init
 	view.reset(sf::FloatRect(100, 100, 800, 600));
 	view.setViewport(sf::FloatRect(0.f, 0.f, 1.f, 1.f));
@@ -10,11 +11,13 @@ void Player::Init()
 
 void Player::Draw(sf::RenderWindow& window)
 {
+	sf::Vector2f pos = GetPos();
 	CheckCameraBorder(pos.x,pos.y);
 	view.setCenter(pos.x,pos.y);
 	window.setView(view);
+	Entity::Draw(window);
 }
-*/
+
 
 void Player::ProcessInput()
 {
@@ -59,13 +62,13 @@ void Player::CheckCameraBorder(float &x, float &y)
 	{
 		y = 300;
 	}
-	if(x > (mapx * TILE_SIZE - 400))
+	if(x > (map.x * TILE_SIZE - 400))
 	{
-		x = (mapx * TILE_SIZE - 400);
+		x = (map.x * TILE_SIZE - 400);
 	}
-	if(y > (mapy * TILE_SIZE - 300))
+	if(y > (map.y * TILE_SIZE - 300))
 	{
-		y = (mapy * TILE_SIZE - 300);
+		y = (map.y * TILE_SIZE - 300);
 	}
 }
 
