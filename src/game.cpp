@@ -8,6 +8,7 @@ void Game::Run()
 	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Zelda Clone");
 
 	npcManager.Init();
+
 	map.LoadMap("Maps/Map1.txt"); // Improve the way we handle maps
 	map1.LoadMap("Maps/Map1.1.txt");
 	map2.LoadMap("Maps/Map1.2.txt");
@@ -26,7 +27,6 @@ void Game::Run()
 		std::cout << "Player texture file cannot be found!" << std::endl;
 
 	player.Init(screenDimensions, 124, 450, playerTexture, map.GetMapSize());
-	//player.MapSize(map.GetMapSize());// Pass x and y from map to player
 
 	//create npc
 	npcManager.CreateNPC(120, 420, texture, map.GetMapSize());
@@ -37,9 +37,9 @@ void Game::Run()
 	//Main Loop
 	while (window.isOpen())
 	{
+		dt = deltaClock.restart();
 		if( State == GAMESTATE::PLAYING)
 		{
-			dt = deltaClock.restart();
 			Update(dt);
 			Draw();
 		}
@@ -62,8 +62,11 @@ void Game::Draw()
 	map.Draw(window);
 	npcManager.Draw(window);
 	player.Draw(window);
-	map1.Draw(window);
-	map2.Draw(window);
+	if(DrawHouse)
+	{
+		map1.Draw(window);
+		map2.Draw(window);
+	}
 	window.display();
 }
 
@@ -99,18 +102,29 @@ void Game::ProcessInput()
 	player.ProcessInput();
 	npcManager.ProcessInput();
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R) && (State != GAMESTATE::PLAYING))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R) && (State == GAMESTATE::MAINMENU))
 	{
 		State = GAMESTATE::PLAYING;
 		std::cout << "State: Playing" << std::endl;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::X) && (State != GAMESTATE::PLAYING))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::X) && (State == GAMESTATE::MAINMENU))
 	{
 		window.close();
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (State == GAMESTATE::MAINMENU))
 	{
 		menu.Settings();
+	}
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::H) && (State == GAMESTATE::PLAYING))
+	{
+		if(DrawHouse)
+		{
+			DrawHouse = false;
+		}
+		else
+		{
+			DrawHouse = true;
+		}
 	}
 
 }

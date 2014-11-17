@@ -14,5 +14,6 @@ class Npc : public Entity
 public:
 	void ProcessInput();
 private:
+	int Random;
 
 };
