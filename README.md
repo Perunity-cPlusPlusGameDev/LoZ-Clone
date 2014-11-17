@@ -22,3 +22,7 @@ People we love <3
  -  Helped with NPCs not displaying properly
      - Mooneye
      - Nyrox
+
+	 
+Character generator
+http://www.famitsu.com/freegame/tool/chibi/index1.html
