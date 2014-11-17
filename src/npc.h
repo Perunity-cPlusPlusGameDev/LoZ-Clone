@@ -2,10 +2,12 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include <cstdlib>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
+
 #include "Entity.h"
 class Npc : public Entity
 {
