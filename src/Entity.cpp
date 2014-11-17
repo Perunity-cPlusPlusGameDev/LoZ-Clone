@@ -1,14 +1,17 @@
 #include "Entity.h"
 
-void Entity::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize)
+void Entity::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize, bool _isNPC)
 {
 	texture = _texture;
+	isNPC = _isNPC;
 	sprite.setTexture(_texture);
 	source = sf::Vector2i(1, DOWN);
 	velocity = sf::Vector2i(0,0);
 	sprite.setPosition(initPosX,initPosY);
 	map = mapSize;
-	std::cout << "Starting Position X:" << initPosX << " Y:" << initPosY << std::endl;
+	startPosition.x = initPosX;
+	startPosition.y = initPosY;
+	//std::cout << "Starting Position X:" << startPosition.x << " Y:" << startPosition.y << std::endl;
 }
 
 void Entity::Draw(sf::RenderWindow& window)
@@ -38,21 +41,43 @@ void Entity::Update(sf::Time dt)
 
 void Entity::CheckCollision(float &x, float &y)
 {
-	if ( x < 0 )
+	if(isNPC)
 	{
-		x = 0;
+		if( x < startPosition.x - npcWalkingDistance)
+		{
+			x = startPosition.x - npcWalkingDistance;
+		}
+		if( y < startPosition.y - npcWalkingDistance)
+		{
+			y = startPosition.y - npcWalkingDistance;
+		}
+		if( x > startPosition.x + npcWalkingDistance)
+		{
+			x = startPosition.x + npcWalkingDistance;
+		}
+		if( y > startPosition.y + npcWalkingDistance)
+		{
+			y = startPosition.y + npcWalkingDistance;
+		}
 	}
-	if ( y <= 0 )
+	else 
 	{
-		y = 0;
-	}
-	if ( x > ((map.x * TILE_SIZE) - TILE_SIZE))
-	{
-		x = ((map.x * TILE_SIZE) - TILE_SIZE);
-	}
-	if ( y > (map.y * TILE_SIZE) - TILE_SIZE )
-	{
-		y = (map.y * TILE_SIZE) - TILE_SIZE;
+		if ( x < 0 )
+		{
+			x = 0;
+		}
+		if ( y < 0 )
+		{
+			y = 0;
+		}
+		if ( x > ((map.x * TILE_SIZE) - TILE_SIZE))
+		{
+			x = ((map.x * TILE_SIZE) - TILE_SIZE);
+		}
+		if ( y > (map.y * TILE_SIZE) - TILE_SIZE )
+		{
+			y = (map.y * TILE_SIZE) - TILE_SIZE;
+		}
 	}
 }
 
