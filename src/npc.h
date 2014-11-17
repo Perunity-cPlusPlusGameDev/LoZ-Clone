@@ -13,6 +13,7 @@ class Npc : public Entity
 {
 public:
 	void ProcessInput();
+	int i;
 private:
 	int Random;
 

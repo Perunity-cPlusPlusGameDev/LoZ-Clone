@@ -14,4 +14,8 @@ public:
 	void ProcessInput();
 private:
 	std::vector<Npc> npcList;
+	int random;
+	sf::Time timeLimit = sf::seconds(1);
+	sf::Time elapsedTime;
+	sf::Clock timer;
 };

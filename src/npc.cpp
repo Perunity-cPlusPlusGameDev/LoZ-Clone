@@ -1,8 +1,7 @@
 #include "npc.h"
 void Npc::ProcessInput()
 {
-	Random = std::rand() % 4;
-	switch(Random)
+	switch(i)
 	{
 		case 0:
 			source.y = UP;

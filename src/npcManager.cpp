@@ -28,8 +28,18 @@ void NpcManager::CreateNPC(int x, int y, sf::Texture& texture, sf::Vector2i mapS
 }
 void NpcManager::ProcessInput()
 {
+	elapsedTime = timer.getElapsedTime();
+	if(elapsedTime > timeLimit)
+	{
+		for (int i = 0; i < npcList.size(); i++)
+		{
+			npcList[i].i = std::rand() % 4;
+			timer.restart();
+		}
+	}
+
 	for (int i = 0; i < npcList.size(); i++)
 	{
 		npcList[i].ProcessInput();
-}
+	}
 }
