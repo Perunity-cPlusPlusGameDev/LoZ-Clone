@@ -21,6 +21,7 @@ void gameMenu::LoadMenu(const std::string& fileName, sf::RenderWindow &window, i
 
 	window.clear();
 	window.draw(mainMenu);
+	MakeText("Visit \"bit.ly/LoZ-Clone\" to checkout our source code",window, x/2, y/4);
 	MakeText("Press R to start", window, x/2, y-150);
 	MakeText("Press S to go setting", window, x/2, y-100);
 	MakeText("Press X to exit", window, x/2, y-50);
