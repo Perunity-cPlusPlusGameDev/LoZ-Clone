@@ -23,11 +23,11 @@ void NpcManager::Update(sf::Time dt)
 	}
 }
 
-void NpcManager::CreateNPC(int x, int y, sf::Texture& texture, sf::Vector2i mapSize, bool isNPC)
+void NpcManager::CreateNPC(int x, int y, sf::Texture& texture, sf::Vector2i mapSize)
 {
 
 	Npc npc;
-	npc.Init(sf::Vector2i(800, 600), x, y, texture, mapSize, isNPC);
+	npc.Init(sf::Vector2i(800, 600), x, y, texture, mapSize);
 	npcList.push_back(npc);
 }
 void NpcManager::ProcessInput()

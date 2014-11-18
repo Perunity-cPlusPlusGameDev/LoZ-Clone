@@ -60,7 +60,7 @@ void Entity::CheckCollision(float &x, float &y)
 			y = startPosition.y + npcWalkingDistance;
 		}
 	}
-	else 
+	else
 	{
 		if ( x < 0 )
 		{

@@ -1,4 +1,11 @@
 #include "npc.h"
+
+void Npc::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize)
+{
+	Entity::Init(screenDimensions, initPosX, initPosY, _texture, mapSize, true);
+
+}
+
 void Npc::ProcessInput()
 {
 	switch(i)

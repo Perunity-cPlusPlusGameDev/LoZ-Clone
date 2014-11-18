@@ -10,11 +10,11 @@
 class Entity
 {
 public:
-	void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture, sf::Vector2i mapSize, bool isNPC);
-	void SetPos(int posx, int posy, int dir);
+	virtual void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture, sf::Vector2i mapSize,bool _isNPC);
+	virtual void SetPos(int posx, int posy, int dir);
 	sf::Vector2f GetPos();
-	void Draw(sf::RenderWindow& window);
-	void Update(sf::Time dt);
+	virtual void Draw(sf::RenderWindow& window);
+	virtual void Update(sf::Time dt);
 	//void MapSize(sf::Vector2i pos);
 
 protected:

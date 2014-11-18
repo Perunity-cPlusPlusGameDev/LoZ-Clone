@@ -1,9 +1,9 @@
 #include "player.h"
 
 
-void Player::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture, sf::Vector2i mapSize, bool isNPC)
+void Player::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture, sf::Vector2i mapSize)
 {
-	Entity::Init(screenDimensions, initPosX, initPosY, texture, mapSize, isNPC);
+	Entity::Init(screenDimensions, initPosX, initPosY, texture, mapSize, false);
 	// Camera Init
 	view.reset(sf::FloatRect(100, 100, 800, 600));
 	view.setViewport(sf::FloatRect(0.f, 0.f, 1.f, 1.f));
