@@ -41,7 +41,7 @@ void Entity::Update(sf::Time dt)
 
 void Entity::CheckCollision(float &x, float &y)
 {
-	if(isNPC)
+	/*if(isNPC)
 	{
 		if( x < startPosition.x - npcWalkingDistance)
 		{
@@ -61,7 +61,7 @@ void Entity::CheckCollision(float &x, float &y)
 		}
 	}
 	else
-	{
+	{*/
 		if ( x < 0 )
 		{
 			x = 0;
@@ -78,7 +78,7 @@ void Entity::CheckCollision(float &x, float &y)
 		{
 			y = (map.y * TILE_SIZE) - TILE_SIZE;
 		}
-	}
+	//}
 }
 
 sf::Vector2f Entity::GetPos()

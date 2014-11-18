@@ -29,9 +29,13 @@ void Game::Run()
 	player.Init(screenDimensions, 124, 450, playerTexture, map.GetMapSize());
 
 	//create npc
-	npcManager.CreateNPC(120, 480, texture, map.GetMapSize());
-	npcManager.CreateNPC(154, 480, texture, map.GetMapSize());
-	npcManager.CreateNPC(188, 480, texture2, map.GetMapSize());
+	//npcManager.CreateNPC(120, 480, texture, map.GetMapSize());
+	//npcManager.CreateNPC(154, 480, texture, map.GetMapSize());
+	//npcManager.CreateNPC(188, 480, texture2, map.GetMapSize());
+	for(int i = 0; i < 1000; i++)
+	{
+		npcManager.CreateNPC(120, 480, texture, map.GetMapSize());
+	}
 
 
 	//Main Loop
