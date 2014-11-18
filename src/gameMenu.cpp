@@ -1,7 +1,8 @@
 #include "gameMenu.h"
 
-void gameMenu::LoadMenu(const std::string& fileName, sf::RenderWindow &window, int x, int y, Gui gui){
+void gameMenu::LoadMenu(const std::string& fileName, sf::RenderWindow &window, int x, int y){
 	// Music
+	gui.Init("Triforce");
     if (!music.openFromFile(fileName))
     {
         std::cout << "Music file cannot be found!\n";
@@ -21,10 +22,11 @@ void gameMenu::LoadMenu(const std::string& fileName, sf::RenderWindow &window, i
 
 	window.clear();
 	window.draw(mainMenu);
-	gui.MakeText("Visit \"bit.ly/LoZ-Clone\" to checkout our source code",window, x/2, y/4, 30);
-	gui.MakeText("Press R to start", window, x/2, y-150, 30);
-	gui.MakeText("Press S to go setting", window, x/2, y-100, 30);
-	gui.MakeText("Press X to exit", window, x/2, y-50, 30);
+	sf::Color color = sf::Color(0, 0, 0);
+	gui.MakeTextbox("Visit \"bit.ly/LoZ-Clone\" to checkout our source code",window, x/2, y/4, 30, color);
+	gui.MakeTextbox("Press R to start", window, x/2, y-150, 30, color);
+	gui.MakeTextbox("Press S to go setting", window, x/2, y-100, 30, color);
+	gui.MakeTextbox("Press X to exit", window, x/2, y-50, 30, color);
 	window.display();
 	std::cout << "Texture loaded!\n";
 }

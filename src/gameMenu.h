@@ -12,7 +12,7 @@
 class gameMenu
 {
 public:
-	void LoadMenu(const std::string& fileName, sf::RenderWindow &window, int x, int y, Gui gui);
+	void LoadMenu(const std::string& fileName, sf::RenderWindow &window, int x, int y);
 	void Settings();
 	void ProcessEvents();
 private:
@@ -20,6 +20,7 @@ private:
 	sf::Sprite mainMenu;
 	sf::Texture mainMenuTexture;
 	sf::RenderWindow windowSetting;
+	Gui gui;
 	void MakeText(std::string btnName, sf::RenderWindow &window, int x, int y);
 };
 #endif
