@@ -30,3 +30,8 @@ void Npc::ProcessInput()
 	}
 
 }
+void Npc::Update(sf::Time dt)
+{
+	int dummy;
+	Entity::Update(dt, dummy);
+}

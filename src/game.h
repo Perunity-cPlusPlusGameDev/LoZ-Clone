@@ -33,7 +33,7 @@ private:
 	Npc npc1;
 	Npc npc2;
 	gameMenu menu;
-	Map map;
+	Map map, cave, field;
 	Map map1;
 	Map map2;
 	int State;
@@ -43,6 +43,7 @@ private:
 	sf::Texture texture;
 	sf::Texture texture2;
 	sf::Texture playerTexture;
-	bool DrawHouse = true;
+	bool DrawHouse = false;
+	int currentMap = 0;
 };
 #endif

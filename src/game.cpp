@@ -9,10 +9,11 @@ void Game::Run()
 
 	npcManager.Init();
 
-	map.LoadMap("Maps/Map1.txt"); // Improve the way we handle maps
-	map1.LoadMap("Maps/Map1.1.txt");
-	map2.LoadMap("Maps/Map1.2.txt");
-
+	map.LoadMap("Maps/Map1.txt", "RPGpack_sheet"); // Improve the way we handle maps
+	map1.LoadMap("Maps/Map1.1.txt", "RPGpack_sheet");
+	map2.LoadMap("Maps/Map1.2.txt", "RPGpack_sheet");
+	cave.LoadMap("Maps/cave.txt", "RPGpack_sheet");
+	field.LoadMap("Maps/Field1.txt", "hyptosis1");
 	/*End Of Initialize*/
 
 	// Load Main Menu
@@ -29,13 +30,9 @@ void Game::Run()
 	player.Init(screenDimensions, 124, 450, playerTexture, map.GetMapSize());
 
 	//create npc
-	//npcManager.CreateNPC(120, 480, texture, map.GetMapSize());
-	//npcManager.CreateNPC(154, 480, texture, map.GetMapSize());
-	//npcManager.CreateNPC(188, 480, texture2, map.GetMapSize());
-	for(int i = 0; i < 1000; i++)
-	{
-		npcManager.CreateNPC(120, 480, texture, map.GetMapSize());
-	}
+	npcManager.CreateNPC(120, 480, texture, map.GetMapSize());
+	npcManager.CreateNPC(154, 480, texture, map.GetMapSize());
+	npcManager.CreateNPC(188, 480, texture2, map.GetMapSize());
 
 
 	//Main Loop
@@ -56,21 +53,32 @@ void Game::Run()
 void Game::Update(sf::Time _dt)
 {
 	npcManager.Update(_dt);
-	player.Update(_dt);
+	player.Update(_dt, currentMap);
+	map.SetCurrentMap(currentMap);
 }
 
 void Game::Draw()
 {
 	window.clear();
-
-	map.Draw(window);
-	npcManager.Draw(window);
-	player.Draw(window);
-	if(DrawHouse)
+	switch(map.GetCurrentMap())
 	{
-		map1.Draw(window);
-		map2.Draw(window);
+		case 0:
+			map.Draw(window);
+			cave.Draw(window);
+			if(DrawHouse)
+			{
+				map1.Draw(window);
+				map2.Draw(window);
+			}
+			npcManager.Draw(window);
+			break;
+		case 1:
+			// set player position
+			field.Draw(window);
+			break;
 	}
+	;
+	player.Draw(window);
 	window.display();
 }
 

@@ -4,9 +4,9 @@ void Map::Run()
 {
 
 }
-void Map::LoadMap(const std::string& fileName)
+void Map::LoadMap(const std::string fileName, const std::string name)
 {
-	if(!tileTexture.loadFromFile("Textures/RPGpack_sheet.png"))
+	if(!tileTexture.loadFromFile("Textures/"+name+".png"))
 	{
 		std::cout << "Map texture file cannot be found!" << std::endl;
 	}
@@ -78,4 +78,12 @@ void Map::PrintTileSheet(sf::RenderWindow &window)
 sf::Vector2i Map::GetMapSize()
 {
 	return sf::Vector2i(map[0].size(),map.size());
+}
+int Map::GetCurrentMap()
+{
+	 return numCurrentMap;
+}
+void Map::SetCurrentMap(int i)
+{
+	numCurrentMap = i;
 }

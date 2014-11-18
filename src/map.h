@@ -12,14 +12,17 @@ class Map
 {
 public:
 	void Run();
-	void LoadMap(const std::string& fileName);
+	void LoadMap(const std::string fileName, const std::string name);
 	void Draw(sf::RenderWindow &window);
 	void PrintTileSheet(sf::RenderWindow &window);
+	int GetCurrentMap();
+	void SetCurrentMap(int i);
 	sf::Vector2i GetMapSize();
 private:
 	static const int TILE_SIZE = 32;
 	std::vector<std::vector<sf::Vector2i>> map;
 	sf::Sprite tile;
 	sf::Texture tileTexture;
+	int numCurrentMap;
 };
 #endif

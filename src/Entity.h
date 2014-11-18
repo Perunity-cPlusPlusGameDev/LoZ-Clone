@@ -14,13 +14,13 @@ public:
 	virtual void SetPos(int posx, int posy, int dir);
 	sf::Vector2f GetPos();
 	virtual void Draw(sf::RenderWindow& window);
-	virtual void Update(sf::Time dt);
+	virtual void Update(sf::Time dt, int &currentMap);
 	//void MapSize(sf::Vector2i pos);
 
 protected:
 
 	void Move(sf::Vector2i velocity);
-	void CheckCollision(float &x, float &y);
+	void CheckCollision(float &x, float &y, int &currentMap);
 
 public:
 
