@@ -21,10 +21,10 @@ void gameMenu::LoadMenu(const std::string& fileName, sf::RenderWindow &window, i
 
 	window.clear();
 	window.draw(mainMenu);
-	gui.MakeText("Visit \"bit.ly/LoZ-Clone\" to checkout our source code",window, x/2, y/4);
-	gui.MakeText("Press R to start", window, x/2, y-150);
-	gui.MakeText("Press S to go setting", window, x/2, y-100);
-	gui.MakeText("Press X to exit", window, x/2, y-50);
+	gui.MakeText("Visit \"bit.ly/LoZ-Clone\" to checkout our source code",window, x/2, y/4, 30);
+	gui.MakeText("Press R to start", window, x/2, y-150, 30);
+	gui.MakeText("Press S to go setting", window, x/2, y-100, 30);
+	gui.MakeText("Press X to exit", window, x/2, y-50, 30);
 	window.display();
 	std::cout << "Texture loaded!\n";
 }

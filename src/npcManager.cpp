@@ -8,6 +8,8 @@ void NpcManager::Draw(sf::RenderWindow& window)
 {
 	for (int i = 0; i < npcList.size(); i++)
 	{
+		sf::Vector2f pos = npcList[i].GetPos();
+		gui.MakeText("Hello", window, pos.x + 22, pos.y - 10, 15);
 		npcList[i].Draw(window);
 	}
 }

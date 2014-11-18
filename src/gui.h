@@ -12,7 +12,7 @@ class Gui
 {
 public:
 	Gui();
-	void MakeText(std::string btnName, sf::RenderWindow &window, int x, int y);
+	void MakeText(std::string btnName, sf::RenderWindow &window, int x, int y, size_t textSize);
 private:
 	sf::Sprite mainMenu;
 	sf::Texture mainMenuTexture;

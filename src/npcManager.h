@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "npc.h"
-
+#include "gui.h"
 class NpcManager
 {
 public:
@@ -18,4 +18,5 @@ private:
 	sf::Time timeLimit = sf::seconds(1);
 	sf::Time elapsedTime;
 	sf::Clock timer;
+	Gui gui;
 };
