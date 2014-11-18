@@ -10,7 +10,7 @@ void NpcManager::Draw(sf::RenderWindow& window)
 	for (int i = 0; i < npcList.size(); i++)
 	{
 		sf::Vector2f pos = npcList[i].GetPos();
-		gui.MakeTextbox("Hello, Bahbi!", window, pos.x + 22, pos.y - 20, 15, sf::Color(255, 0, 0), true);
+		gui.MakeTextbox("Hello, ****! \n How are you today? \n lol", window, pos.x + 25, pos.y - 25, 15, sf::Color(255, 255, 255), true);
 		npcList[i].Draw(window);
 	}
 }

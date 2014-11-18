@@ -17,7 +17,7 @@ void Gui::MakeTextbox(std::string btnName, sf::RenderWindow &window, int x, int 
 
 	if(withBox)
 	{
-		textbox.setSize(sf::Vector2f(textRect.width+5, textRect.height*2));
+		textbox.setSize(sf::Vector2f(textRect.width+5, textRect.height+5));
 		textbox.setFillColor(sf::Color(0,0,0,50));
 		//textbox.setOutlineColor(sf::Color(0, 0, 0));
 		//textbox.setOutlineThickness(0.5);
