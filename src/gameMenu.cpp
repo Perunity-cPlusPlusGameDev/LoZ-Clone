@@ -9,6 +9,7 @@ void gameMenu::LoadMenu(const std::string& fileName, sf::RenderWindow &window, i
 	}
 	music.play();
 	music.setLoop(true);
+	music.setVolume(0.5f);
 	std::cout << "Music Loaded\n";
 
 	// Main menu image
