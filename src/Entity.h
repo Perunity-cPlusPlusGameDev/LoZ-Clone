@@ -10,17 +10,17 @@
 class Entity
 {
 public:
-	virtual void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture, sf::Vector2i mapSize,bool _isNPC);
+	virtual void ProcessInput();
+	virtual void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture, sf::Vector2i mapSize, int _entityType);
 	virtual void SetPos(int posx, int posy, int dir);
-	sf::Vector2f GetPos();
+	virtual sf::Vector2f GetPos();
 	virtual void Draw(sf::RenderWindow& window);
-	virtual void Update(sf::Time dt, int &currentMap);
-	//void MapSize(sf::Vector2i pos);
+	virtual void Update(sf::Time dt);
+
 
 protected:
-
 	void Move(sf::Vector2i velocity);
-	void CheckCollision(float &x, float &y, int &currentMap);
+	void CheckCollision(float &x, float &y);
 
 public:
 
@@ -40,7 +40,7 @@ protected:
 	sf::Clock clock;
 	float frameCounter = 0, switchFrame = 100, frameSpeed = 500;
 	sf::Vector2i map;
-	bool isNPC;
 	sf::Vector2i startPosition;
 	int npcWalkingDistance = 50;
+	int entityType;
 };

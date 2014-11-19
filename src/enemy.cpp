@@ -1,8 +1,8 @@
 #include "enemy.h"
 
-void Enemy::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize)
+void Enemy::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize, int entityType)
 {
-	Entity::Init(screenDimensions, initPosX, initPosY, _texture, mapSize, false);
+	Entity::Init(screenDimensions, initPosX, initPosY, _texture, mapSize, entityType);
 
 }
 
@@ -32,6 +32,5 @@ void Enemy::ProcessInput()
 }
 void Enemy::Update(sf::Time dt)
 {
-	int dummy;
-	Entity::Update(dt, dummy);
+	Entity::Update(dt);
 }

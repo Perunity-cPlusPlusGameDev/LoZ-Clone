@@ -1,9 +1,9 @@
 #include "Entity.h"
 
-void Entity::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize, bool _isNPC)
+void Entity::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize, int _entityType)
 {
 	texture = _texture;
-	isNPC = _isNPC;
+	entityType = _entityType;
 	sprite.setTexture(_texture);
 	source = sf::Vector2i(1, DOWN);
 	velocity = sf::Vector2i(0,0);
@@ -23,23 +23,30 @@ void Entity::Draw(sf::RenderWindow& window)
 			frameCounter = 0;
 			if(velocity != sf::Vector2i(0,0))
 				source.x++;
+			else
+				source.x = 0;
 			if(source.x * 32 >= texture.getSize().x)
 				source.x = 0;
 		}
 	window.draw(sprite);
 }
 
-void Entity::Update(sf::Time dt, int &currentMap)
+void Entity::ProcessInput()
+{
+}
+
+void Entity::Update(sf::Time dt)
 {
 	sprite.move(velocity.x * dt.asSeconds() ,velocity.y * dt.asSeconds());
 	sf::Vector2f pos = GetPos();
-	CheckCollision(pos.x, pos.y, currentMap);
+	CheckCollision(pos.x, pos.y);
 	sprite.setPosition(pos.x, pos.y);
 }
 
-void Entity::CheckCollision(float &x, float &y, int &currentMap)
+void Entity::CheckCollision(float &x, float &y)
 {
-	if(isNPC)
+
+	if(entityType == 1)
 	{
 		if( x < startPosition.x - npcWalkingDistance)
 		{
@@ -77,11 +84,11 @@ void Entity::CheckCollision(float &x, float &y, int &currentMap)
 			y = (map.y * TILE_SIZE) - TILE_SIZE;
 		}
 		// TELEPERRRTT
-		if ( (x > 0 && x <= 30) && (y <= 30 && y > 0))
-		{
-			currentMap = (currentMap ? 0 : 1);
-			y += 30;
-		}
+		//if ( (x > 0 && x <= 30) && (y <= 30 && y > 0))
+		//{
+		//	currentMap = (currentMap ? 0 : 1);
+		//	y += 30;
+		//}
 	}
 }
 

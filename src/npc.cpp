@@ -1,14 +1,20 @@
 #include "npc.h"
 
-void Npc::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize)
+void Npc::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize, int entityType)
 {
-	Entity::Init(screenDimensions, initPosX, initPosY, _texture, mapSize, true);
+	Entity::Init(screenDimensions, initPosX, initPosY, _texture, mapSize, entityType);
+}
 
+void Npc::Draw(sf::RenderWindow& window)
+{
+	Entity::Draw(window);
 }
 
 void Npc::ProcessInput()
 {
-	switch(i)
+	srand(time(NULL));
+	random = std::rand() % 4;
+	switch(random)
 	{
 		case 0:
 			source.y = UP;
@@ -26,12 +32,17 @@ void Npc::ProcessInput()
 			source.y = RIGHT;
 			velocity.x = 50;
 			break;
-
+		default:
+			break;
 	}
-
 }
+
 void Npc::Update(sf::Time dt)
 {
-	int dummy;
-	Entity::Update(dt, dummy);
+	Entity::Update(dt);
+}
+
+sf::Vector2f Npc::GetPos()
+{
+	return Entity::GetPos();
 }
