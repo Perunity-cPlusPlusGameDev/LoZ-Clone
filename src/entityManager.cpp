@@ -12,7 +12,6 @@ void EntityManager::Draw(sf::RenderWindow& window)
 		sf::Vector2f pos = entityList[i]->GetPos();
 		//gui.MakeTextbox("Hello, ****! \n How are you today? \n lol", window, pos.x + 25, pos.y - 25, 15, sf::Color(255, 255, 255), true);
 		entityList[i]->Draw(window);
-		//std::cout << pos.x << pos.y << std::endl;
 	}
 }
 

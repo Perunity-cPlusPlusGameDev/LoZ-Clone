@@ -12,10 +12,8 @@ void Npc::Draw(sf::RenderWindow& window)
 
 void Npc::ProcessInput()
 {
-	//std::cout << "NPC PROCESS INPUT" << std::endl;
 	srand(time(NULL));
 	random = std::rand() % 4;
-	std::cout << random << std::endl;
 	switch(random)
 	{
 		case 0:
@@ -35,7 +33,7 @@ void Npc::ProcessInput()
 			velocity.x = 50;
 			break;
 		default:
-		break;
+			break;
 	}
 }
 

@@ -23,6 +23,8 @@ void Entity::Draw(sf::RenderWindow& window)
 			frameCounter = 0;
 			if(velocity != sf::Vector2i(0,0))
 				source.x++;
+			else
+				source.x = 0;
 			if(source.x * 32 >= texture.getSize().x)
 				source.x = 0;
 		}
@@ -31,7 +33,6 @@ void Entity::Draw(sf::RenderWindow& window)
 
 void Entity::ProcessInput()
 {
-	std::cout << "ENTITY PROCESS INPUT" << std::endl;
 }
 
 void Entity::Update(sf::Time dt)
