@@ -22,6 +22,9 @@ People we love <3
  -  Helped with NPCs not displaying properly
      - Mooneye
      - Nyrox
+ -  Helped with derived class functions not being called
+     - eXpl0iter
+     - Mario
 
 	 
 Character generator
