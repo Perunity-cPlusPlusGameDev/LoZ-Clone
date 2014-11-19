@@ -30,8 +30,9 @@ void EntityManager::CreateEntity(int entityType, int x, int y, sf::Texture& text
 	{
 		case 1:
 		{
+			Entity* entity;
 			std::unique_ptr<Entity> ptr(entity);
-			ptr.Init(sf::Vector2i(800, 600), x, y, texture, mapSize);
+			ptr->Init(sf::Vector2i(800, 600), x, y, texture, mapSize);
 			entityList.push_back(ptr);
 		}break;
 
