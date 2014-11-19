@@ -5,7 +5,7 @@ void Npc::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Te
 	Entity::Init(screenDimensions, initPosX, initPosY, _texture, mapSize);
 }
 
-void Npc::Draw(window)
+void Npc::Draw(sf::RenderWindow& window)
 {
 	Entity::Draw(window);
 }
