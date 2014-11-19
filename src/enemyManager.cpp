@@ -31,12 +31,13 @@ void EnemyManager::CreateEnemy(int x, int y, sf::Texture& texture, sf::Vector2i 
 }
 void EnemyManager::ProcessInput()
 {
+
 	elapsedTime = timer.getElapsedTime();
 	if(elapsedTime > timeLimit)
 	{
 		for (int i = 0; i < enemyList.size(); i++)
 		{
-			enemyList[i].i = std::rand() % 4;
+			enemyList[i].i = std::rand() % 20;// better random
 			timer.restart();
 		}
 	}
