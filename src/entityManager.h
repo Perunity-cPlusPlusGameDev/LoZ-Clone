@@ -17,6 +17,7 @@ public:
 	void CreateEntity(int entityType, int x, int y, sf::Texture& texture, sf::Vector2i mapSize);
 	void ProcessInput();
 private:
+	Entity* entity;
 	std::vector<std::unique_ptr<Entity>> entityList;
 	sf::Time timeLimit = sf::seconds(1);
 	sf::Time elapsedTime;
