@@ -24,6 +24,5 @@ People we love <3
      - Nyrox
 
 	 
-	 
 Character generator
 http://www.famitsu.com/freegame/tool/chibi/index1.html
