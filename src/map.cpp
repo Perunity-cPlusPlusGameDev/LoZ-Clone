@@ -4,12 +4,9 @@ void Map::Run()
 {
 
 }
-void Map::LoadMap(const std::string fileName, const std::string name)
+void Map::LoadMap(const std::string fileName, sf::Texture &tileTexture)
 {
-	if(!tileTexture.loadFromFile("Textures/"+name+".png"))
-	{
-		std::cout << "Map texture file cannot be found!" << std::endl;
-	}
+
 	tile.setTexture(tileTexture);
 
 	std::cout << "Loading Map...." << std::endl;

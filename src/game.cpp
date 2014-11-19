@@ -10,23 +10,27 @@ void Game::Run()
 	townNpc.Init();
 	fieldEnemy.Init();
 
-	map.LoadMap("Maps/Map1.txt", "RPGpack_sheet"); // Improve the way we handle maps
-	map1.LoadMap("Maps/Map1.1.txt", "RPGpack_sheet");
-	map2.LoadMap("Maps/Map1.2.txt", "RPGpack_sheet");
-	cave.LoadMap("Maps/cave.txt", "RPGpack_sheet");
-	field.LoadMap("Maps/Field1.txt", "hyptosis1");
+	townTexture = rm.LoadTexture("RPGpack_sheet");
+	fieldTexture = rm.LoadTexture("hyptosis1");
+
+	map.LoadMap("Maps/Map1.txt", townTexture); // Improve the way we handle maps
+	map1.LoadMap("Maps/Map1.1.txt", townTexture);
+	map2.LoadMap("Maps/Map1.2.txt", townTexture);
+	cave.LoadMap("Maps/cave.txt", townTexture);
+	field.LoadMap("Maps/Field1.txt", fieldTexture);
 	/*End Of Initialize*/
 
 	// Load Main Menu
 	menu.LoadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
 
-	// resource manager
+	// Resource manager
 	playerTexture = rm.LoadTexture("mainchar");
 	npcTexture1 = rm.LoadTexture("npc1");
 	npcTexture2 = rm.LoadTexture("npc2");
 	npcTexture3 = rm.LoadTexture("npc3");
 	enemyTexture = rm.LoadTexture("unicorn");
 
+	// Create Player
 	player.Init(screenDimensions, 124, 450, playerTexture, map.GetMapSize());
 
 	//create npc
@@ -34,6 +38,7 @@ void Game::Run()
 	townNpc.CreateNPC(154, 480, npcTexture2, map.GetMapSize());
 	townNpc.CreateNPC(188, 480, npcTexture3, map.GetMapSize());
 
+	// Create enemy
 	std::default_random_engine generator;
 	std::uniform_int_distribution<int> distributionx(0, field.GetMapSize().x * 32);
 	std::uniform_int_distribution<int> distributiony(0, field.GetMapSize().y * 32);

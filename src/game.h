@@ -44,6 +44,8 @@ private:
 	sf::Texture npcTexture1 , npcTexture2, npcTexture3;
 	sf::Texture playerTexture;
 	sf::Texture enemyTexture;
+	sf::Texture fieldTexture;
+	sf::Texture townTexture;
 	bool DrawHouse = false;
 	int currentMap = 0;
 };

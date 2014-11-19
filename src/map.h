@@ -12,7 +12,7 @@ class Map
 {
 public:
 	void Run();
-	void LoadMap(const std::string fileName, const std::string name);
+	void LoadMap(const std::string fileName, sf::Texture &tileTexture);
 	void Draw(sf::RenderWindow &window);
 	void PrintTileSheet(sf::RenderWindow &window);
 	int GetCurrentMap();
