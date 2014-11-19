@@ -2,19 +2,21 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "npc.h"
 #include "gui.h"
-class NpcManager
+#include "entity.h"
+#include "npc.h"
+#include <iostream>
+
+class EntityManager
 {
 public:
 	void Init();
 	void Draw(sf::RenderWindow& window);
 	void Update(sf::Time dt);
-	void CreateNPC(int x, int y, sf::Texture& texture, sf::Vector2i mapSize);
+	void CreateEntity(int entityType, int x, int y, sf::Texture& texture, sf::Vector2i mapSize);
 	void ProcessInput();
 private:
-	std::vector<Npc> npcList;
-	int random;
+	std::vector<Entity> entityList;
 	sf::Time timeLimit = sf::seconds(1);
 	sf::Time elapsedTime;
 	sf::Clock timer;

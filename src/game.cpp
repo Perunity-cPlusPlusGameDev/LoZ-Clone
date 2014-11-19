@@ -6,9 +6,7 @@ void Game::Run()
 	State = GAMESTATE::MAINMENU;
 	screenDimensions = sf::Vector2i(800, 600);
 	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Zelda Clone");
-
-	townNpc.Init();
-	fieldEnemy.Init();
+	entityManager.Init();
 
 	townTexture = rm.LoadTexture("RPGpack_sheet");
 	fieldTexture = rm.LoadTexture("hyptosis1");
@@ -31,21 +29,24 @@ void Game::Run()
 	enemyTexture = rm.LoadTexture("unicorn");
 
 	// Create Player
-	player.Init(screenDimensions, 124, 450, playerTexture, map.GetMapSize());
+	player.Init(screenDimensions, 10, 10, playerTexture, map.GetMapSize());
 
-	//create npc
-	townNpc.CreateNPC(120, 480, npcTexture1, map.GetMapSize());
-	townNpc.CreateNPC(154, 480, npcTexture2, map.GetMapSize());
-	townNpc.CreateNPC(188, 480, npcTexture3, map.GetMapSize());
+	//Create NPCs
+	entityManager.CreateEntity(1, 100, 100, npcTexture1, map.GetMapSize());
+	entityManager.CreateEntity(1, 150, 100, npcTexture2, map.GetMapSize());
+	entityManager.CreateEntity(1, 200, 100, npcTexture3, map.GetMapSize());
 
-	// Create enemy
-	std::default_random_engine generator;
-	std::uniform_int_distribution<int> distributionx(0, field.GetMapSize().x * 32);
-	std::uniform_int_distribution<int> distributiony(0, field.GetMapSize().y * 32);
-	for(int i = 0; i < 100; i++)
-	{
-		fieldEnemy.CreateEnemy(distributionx(generator), distributiony(generator), enemyTexture, field.GetMapSize());
-	}
+	// Create Enemies
+	//std::default_random_engine generator;
+	//std::uniform_int_distribution<int> distributionx(0, field.GetMapSize().x * 32);
+	//std::uniform_int_distribution<int> distributiony(0, field.GetMapSize().y * 32);
+	//for(int i = 0; i < 100; i++)
+	//{
+		//fieldEnemy.CreateEnemy(distributionx(generator), distributiony(generator), enemyTexture, field.GetMapSize());
+	//}
+
+	//  ^^ NEED TO EDIT ENTITYMANAGER FIRST
+
 
 	//Main Loop
 	while (window.isOpen())
@@ -64,43 +65,22 @@ void Game::Run()
 
 void Game::Update(sf::Time _dt)
 {
-	player.Update(_dt, currentMap);
+	player.Update(_dt);
 	map.SetCurrentMap(currentMap);
-
-	switch(map.GetCurrentMap())
-	{
-		case 0:
-			townNpc.Update(_dt);
-			break;
-		case 1:
-			fieldEnemy.Update(_dt);
-			break;
-	}
+	entityManager.Update(_dt);
 }
 
 void Game::Draw()
 {
 	window.clear();
-	switch(map.GetCurrentMap())
-	{
-		case 0:
-			map.Draw(window);
-			cave.Draw(window);
-			if(DrawHouse)
-			{
-				map1.Draw(window);
-				map2.Draw(window);
-			}
-			townNpc.Draw(window);
-			break;
-		case 1:
-
-			field.Draw(window);
-			cave.Draw(window);
-			fieldEnemy.Draw(window);
-			break;
-	}
+	map.Draw(window);
+	//cave.Draw(window);
+	//map1.Draw(window);
+	//map2.Draw(window);
+	//field.Draw(window);
+	//cave.Draw(window);
 	player.Draw(window);
+	entityManager.Draw(window);
 	window.display();
 }
 
@@ -134,17 +114,8 @@ void Game::ProcessEvents()
 void Game::ProcessInput()
 {
 	player.ProcessInput();
+	entityManager.ProcessInput();
 
-
-	switch(map.GetCurrentMap())
-	{
-		case 0:
-			townNpc.ProcessInput();
-			break;
-		case 1:
-			fieldEnemy.ProcessInput();
-			break;
-	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R) && (State == GAMESTATE::MAINMENU))
 	{
 		State = GAMESTATE::PLAYING;
@@ -157,17 +128,6 @@ void Game::ProcessInput()
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (State == GAMESTATE::MAINMENU))
 	{
 		menu.Settings();
-	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::H) && (State == GAMESTATE::PLAYING))
-	{
-		if(DrawHouse)
-		{
-			DrawHouse = false;
-		}
-		else
-		{
-			DrawHouse = true;
-		}
 	}
 
 }

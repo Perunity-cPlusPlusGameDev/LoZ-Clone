@@ -9,8 +9,7 @@
 #include "npc.h"
 #include "gameMenu.h"
 #include "map.h"
-#include "npcManager.h"
-#include "enemyManager.h"
+#include "entityManager.h"
 namespace GAMESTATE
 {
 	enum
@@ -39,8 +38,7 @@ private:
 	int State;
 	sf::Time dt;
 	sf::Clock deltaClock;
-	NpcManager townNpc;
-	EnemyManager fieldEnemy;
+	EntityManager entityManager;
 	sf::Texture npcTexture1 , npcTexture2, npcTexture3;
 	sf::Texture playerTexture;
 	sf::Texture enemyTexture;

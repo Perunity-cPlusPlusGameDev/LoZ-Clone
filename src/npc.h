@@ -12,11 +12,10 @@
 class Npc : public Entity
 {
 public:
-	void ProcessInput();
 	void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize);
 	void Update(sf::Time dt);
-	int i;
+	void ProcessInput();
 private:
-	int Random;
+	int random;
 
 };

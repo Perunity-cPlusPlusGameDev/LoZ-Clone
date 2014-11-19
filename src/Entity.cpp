@@ -29,15 +29,20 @@ void Entity::Draw(sf::RenderWindow& window)
 	window.draw(sprite);
 }
 
-void Entity::Update(sf::Time dt, int &currentMap)
+void Entity::ProcessInput()
+{
+	std::cout << "ENTITY PROCESS INPUT" << std::endl;
+}
+
+void Entity::Update(sf::Time dt)
 {
 	sprite.move(velocity.x * dt.asSeconds() ,velocity.y * dt.asSeconds());
 	sf::Vector2f pos = GetPos();
-	CheckCollision(pos.x, pos.y, currentMap);
+	CheckCollision(pos.x, pos.y);
 	sprite.setPosition(pos.x, pos.y);
 }
 
-void Entity::CheckCollision(float &x, float &y, int &currentMap)
+void Entity::CheckCollision(float &x, float &y)
 {
 	if(isNPC)
 	{
@@ -77,11 +82,11 @@ void Entity::CheckCollision(float &x, float &y, int &currentMap)
 			y = (map.y * TILE_SIZE) - TILE_SIZE;
 		}
 		// TELEPERRRTT
-		if ( (x > 0 && x <= 30) && (y <= 30 && y > 0))
-		{
-			currentMap = (currentMap ? 0 : 1);
-			y += 30;
-		}
+		//if ( (x > 0 && x <= 30) && (y <= 30 && y > 0))
+		//{
+		//	currentMap = (currentMap ? 0 : 1);
+		//	y += 30;
+		//}
 	}
 }
 

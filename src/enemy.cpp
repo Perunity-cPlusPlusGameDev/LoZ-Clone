@@ -32,6 +32,5 @@ void Enemy::ProcessInput()
 }
 void Enemy::Update(sf::Time dt)
 {
-	int dummy;
-	Entity::Update(dt, dummy);
+	Entity::Update(dt);
 }

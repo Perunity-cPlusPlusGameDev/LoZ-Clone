@@ -10,17 +10,17 @@
 class Entity
 {
 public:
-	virtual void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture, sf::Vector2i mapSize,bool _isNPC);
-	virtual void SetPos(int posx, int posy, int dir);
+	void ProcessInput();
+	void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture, sf::Vector2i mapSize,bool _isNPC);
+	void SetPos(int posx, int posy, int dir);
 	sf::Vector2f GetPos();
-	virtual void Draw(sf::RenderWindow& window);
-	virtual void Update(sf::Time dt, int &currentMap);
-	//void MapSize(sf::Vector2i pos);
+	void Draw(sf::RenderWindow& window);
+	void Update(sf::Time dt);
+
 
 protected:
-
 	void Move(sf::Vector2i velocity);
-	void CheckCollision(float &x, float &y, int &currentMap);
+	void CheckCollision(float &x, float &y);
 
 public:
 

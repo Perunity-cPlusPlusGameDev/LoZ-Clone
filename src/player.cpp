@@ -72,7 +72,7 @@ void Player::CheckCameraBorder(float &x, float &y)
 	}
 }
 
-void Player::Update(sf::Time dt, int &currentMap)
+void Player::Update(sf::Time dt)
 {
-	Entity::Update(dt, currentMap);
+	Entity::Update(dt);
 }
