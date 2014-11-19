@@ -6,3 +6,4 @@
 !/build/libsndfile-1.dll
 !/build/Fonts
 lib/
+/latestbuild/*

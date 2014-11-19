@@ -7,7 +7,8 @@ void Game::Run()
 	screenDimensions = sf::Vector2i(800, 600);
 	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Zelda Clone");
 
-	npcManager.Init();
+	townNpc.Init();
+	fieldEnemy.Init();
 
 	map.LoadMap("Maps/Map1.txt", "RPGpack_sheet"); // Improve the way we handle maps
 	map1.LoadMap("Maps/Map1.1.txt", "RPGpack_sheet");
@@ -20,20 +21,34 @@ void Game::Run()
 	menu.LoadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
 
 	//mock resource manager
-	if(!texture.loadFromFile("Textures/npc1.png"))
-		std::cout << "NPC texture file cannot be found!" << std::endl;
-	if(!texture2.loadFromFile("Textures/npc2.png"))
-		std::cout << "NPC texture file cannot be found!" << std::endl;
-	if(!playerTexture.loadFromFile("Textures/image.png"))
+	if(!playerTexture.loadFromFile("Textures/mainchar.png"))
 		std::cout << "Player texture file cannot be found!" << std::endl;
+	if(!npcTexture1.loadFromFile("Textures/npc1.png"))
+		std::cout << "NPC texture file cannot be found!" << std::endl;
+	if(!npcTexture2.loadFromFile("Textures/npc2.png"))
+		std::cout << "NPC texture file cannot be found!" << std::endl;
+	if(!npcTexture3.loadFromFile("Textures/npc3.png"))
+		std::cout << "NPC texture file cannot be found!" << std::endl;
+	if(!enemyTexture.loadFromFile("Textures/unicorn.png"))
+		std::cout << "Enemy texture file cannot be found!" << std::endl;
 
 	player.Init(screenDimensions, 124, 450, playerTexture, map.GetMapSize());
 
 	//create npc
-	npcManager.CreateNPC(120, 480, texture, map.GetMapSize());
-	npcManager.CreateNPC(154, 480, texture, map.GetMapSize());
-	npcManager.CreateNPC(188, 480, texture2, map.GetMapSize());
+	townNpc.CreateNPC(120, 480, npcTexture1, map.GetMapSize());
+	townNpc.CreateNPC(154, 480, npcTexture2, map.GetMapSize());
+	townNpc.CreateNPC(188, 480, npcTexture3, map.GetMapSize());
 
+	int randX, randY;
+	std::default_random_engine generator;
+	std::uniform_int_distribution<int> distributionx(0, field.GetMapSize().x * 32);
+	std::uniform_int_distribution<int> distributiony(0, field.GetMapSize().y * 32);
+	for(int i = 0; i < 100; i++)
+	{
+		randX = distributionx(generator);
+		randY = distributiony(generator);
+		fieldEnemy.CreateEnemy(randX, randY, enemyTexture, field.GetMapSize());
+	}
 
 	//Main Loop
 	while (window.isOpen())
@@ -52,9 +67,18 @@ void Game::Run()
 
 void Game::Update(sf::Time _dt)
 {
-	npcManager.Update(_dt);
 	player.Update(_dt, currentMap);
 	map.SetCurrentMap(currentMap);
+
+	switch(map.GetCurrentMap())
+	{
+		case 0:
+			townNpc.Update(_dt);
+			break;
+		case 1:
+			fieldEnemy.Update(_dt);
+			break;
+	}
 }
 
 void Game::Draw()
@@ -70,14 +94,15 @@ void Game::Draw()
 				map1.Draw(window);
 				map2.Draw(window);
 			}
-			npcManager.Draw(window);
+			townNpc.Draw(window);
 			break;
 		case 1:
-			// set player position
+
 			field.Draw(window);
+			cave.Draw(window);
+			fieldEnemy.Draw(window);
 			break;
 	}
-	;
 	player.Draw(window);
 	window.display();
 }
@@ -112,8 +137,17 @@ void Game::ProcessEvents()
 void Game::ProcessInput()
 {
 	player.ProcessInput();
-	npcManager.ProcessInput();
 
+
+	switch(map.GetCurrentMap())
+	{
+		case 0:
+			townNpc.ProcessInput();
+			break;
+		case 1:
+			fieldEnemy.ProcessInput();
+			break;
+	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R) && (State == GAMESTATE::MAINMENU))
 	{
 		State = GAMESTATE::PLAYING;

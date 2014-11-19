@@ -76,12 +76,12 @@ void Entity::CheckCollision(float &x, float &y, int &currentMap)
 		{
 			y = (map.y * TILE_SIZE) - TILE_SIZE;
 		}
-		if ( (x > 0 && x <= 16) && (y <= 30 && y > 0))
+		// TELEPERRRTT
+		if ( (x > 0 && x <= 30) && (y <= 30 && y > 0))
 		{
-			currentMap = 1;
+			currentMap = (currentMap ? 0 : 1);
+			y += 30;
 		}
-
-		std::cout << x << " " << y << std::endl;
 	}
 }
 

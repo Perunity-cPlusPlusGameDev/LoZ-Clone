@@ -3,11 +3,13 @@
 #define GAME_H
 
 #include <SFML/Graphics.hpp>
+#include <random>
 #include "player.h"
 #include "npc.h"
 #include "gameMenu.h"
 #include "map.h"
 #include "npcManager.h"
+#include "enemyManager.h"
 namespace GAMESTATE
 {
 	enum
@@ -30,19 +32,16 @@ private:
 	sf::RenderWindow window;
 	sf::Vector2i screenDimensions;
 	Player player;
-	Npc npc1;
-	Npc npc2;
 	gameMenu menu;
-	Map map, cave, field;
-	Map map1;
-	Map map2;
+	Map map, map1, map2, cave, field;
 	int State;
 	sf::Time dt;
 	sf::Clock deltaClock;
-	NpcManager npcManager;
-	sf::Texture texture;
-	sf::Texture texture2;
+	NpcManager townNpc;
+	EnemyManager fieldEnemy;
+	sf::Texture npcTexture1 , npcTexture2, npcTexture3;
 	sf::Texture playerTexture;
+	sf::Texture enemyTexture;
 	bool DrawHouse = false;
 	int currentMap = 0;
 };
