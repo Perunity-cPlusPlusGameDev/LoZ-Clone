@@ -2,7 +2,12 @@
 
 void Npc::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize)
 {
-	Entity::Init(screenDimensions, initPosX, initPosY, _texture, mapSize, true);
+	Entity::Init(screenDimensions, initPosX, initPosY, _texture, mapSize);
+}
+
+void Npc::Draw(window)
+{
+	Entity::Draw(window);
 }
 
 void Npc::ProcessInput()
@@ -36,4 +41,9 @@ void Npc::ProcessInput()
 void Npc::Update(sf::Time dt)
 {
 	Entity::Update(dt);
+}
+
+sf::Vector2f Npc::GetPos()
+{
+	return Entity::GetPos();
 }
