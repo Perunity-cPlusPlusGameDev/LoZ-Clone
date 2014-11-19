@@ -11,7 +11,7 @@ class Entity
 {
 public:
 	virtual void ProcessInput();
-	virtual void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture, sf::Vector2i mapSize);
+	virtual void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture, sf::Vector2i mapSize, int _entityType);
 	virtual void SetPos(int posx, int posy, int dir);
 	virtual sf::Vector2f GetPos();
 	virtual void Draw(sf::RenderWindow& window);
@@ -42,4 +42,5 @@ protected:
 	sf::Vector2i map;
 	sf::Vector2i startPosition;
 	int npcWalkingDistance = 50;
+	int entityType;
 };

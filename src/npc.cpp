@@ -1,8 +1,8 @@
 #include "npc.h"
 
-void Npc::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize)
+void Npc::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize, int entityType)
 {
-	Entity::Init(screenDimensions, initPosX, initPosY, _texture, mapSize);
+	Entity::Init(screenDimensions, initPosX, initPosY, _texture, mapSize, entityType);
 }
 
 void Npc::Draw(sf::RenderWindow& window)
@@ -12,9 +12,10 @@ void Npc::Draw(sf::RenderWindow& window)
 
 void Npc::ProcessInput()
 {
-	std::cout << "NPC PROCESS INPUT" << std::endl;
+	//std::cout << "NPC PROCESS INPUT" << std::endl;
 	srand(time(NULL));
 	random = std::rand() % 4;
+	std::cout << random << std::endl;
 	switch(random)
 	{
 		case 0:

@@ -1,8 +1,8 @@
 #include "enemy.h"
 
-void Enemy::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize)
+void Enemy::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize, int entityType)
 {
-	Entity::Init(screenDimensions, initPosX, initPosY, _texture, mapSize);
+	Entity::Init(screenDimensions, initPosX, initPosY, _texture, mapSize, entityType);
 
 }
 

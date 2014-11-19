@@ -30,8 +30,8 @@ void EntityManager::CreateEntity(int entityType, int x, int y, sf::Texture& text
 	{
 		case 1:
 		{
-			std::unique_ptr<Entity> ptr(new Entity);
-			ptr->Init(sf::Vector2i(800, 600), x, y, texture, mapSize);
+			std::unique_ptr<Npc> ptr(new Npc);
+			ptr->Init(sf::Vector2i(800, 600), x, y, texture, mapSize, entityType);
 			entityList.push_back(std::move(ptr));
 		}break;
 
@@ -44,15 +44,11 @@ void EntityManager::CreateEntity(int entityType, int x, int y, sf::Texture& text
 }
 void EntityManager::ProcessInput()
 {
+	srand(time(NULL));
 	elapsedTime = timer.getElapsedTime();
 	if(elapsedTime > timeLimit)
 	{
-		for (int i = 0; i < entityList.size(); i++)
-		{
-			//entityList[i].ProcessInput();
-		}
+		entityList[std::rand() % entityList.size()]->ProcessInput();
 		timer.restart();
 	}
-
-
 }

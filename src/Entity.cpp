@@ -1,8 +1,9 @@
 #include "Entity.h"
 
-void Entity::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize)
+void Entity::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize, int _entityType)
 {
 	texture = _texture;
+	entityType = _entityType;
 	sprite.setTexture(_texture);
 	source = sf::Vector2i(1, DOWN);
 	velocity = sf::Vector2i(0,0);
@@ -44,47 +45,50 @@ void Entity::Update(sf::Time dt)
 void Entity::CheckCollision(float &x, float &y)
 {
 
-	/*
-	if( x < startPosition.x - npcWalkingDistance)
+	if(entityType == 1)
 	{
-		x = startPosition.x - npcWalkingDistance;
+		if( x < startPosition.x - npcWalkingDistance)
+		{
+			x = startPosition.x - npcWalkingDistance;
+		}
+		if( y < startPosition.y - npcWalkingDistance)
+		{
+			y = startPosition.y - npcWalkingDistance;
+		}
+		if( x > startPosition.x + npcWalkingDistance)
+		{
+			x = startPosition.x + npcWalkingDistance;
+		}
+		if( y > startPosition.y + npcWalkingDistance)
+		{
+			y = startPosition.y + npcWalkingDistance;
+		}
 	}
-	if( y < startPosition.y - npcWalkingDistance)
+	else
 	{
-		y = startPosition.y - npcWalkingDistance;
+		if ( x < 0 )
+		{
+			x = 0;
+		}
+		if ( y < 0 )
+		{
+			y = 0;
+		}
+		if ( x > ((map.x * TILE_SIZE) - TILE_SIZE))
+		{
+			x = ((map.x * TILE_SIZE) - TILE_SIZE);
+		}
+		if ( y > (map.y * TILE_SIZE) - TILE_SIZE )
+		{
+			y = (map.y * TILE_SIZE) - TILE_SIZE;
+		}
+		// TELEPERRRTT
+		//if ( (x > 0 && x <= 30) && (y <= 30 && y > 0))
+		//{
+		//	currentMap = (currentMap ? 0 : 1);
+		//	y += 30;
+		//}
 	}
-	if( x > startPosition.x + npcWalkingDistance)
-	{
-		x = startPosition.x + npcWalkingDistance;
-	}
-	if( y > startPosition.y + npcWalkingDistance)
-	{
-		y = startPosition.y + npcWalkingDistance;
-	}
-	*/
-
-	if ( x < 0 )
-	{
-		x = 0;
-	}
-	if ( y < 0 )
-	{
-		y = 0;
-	}
-	if ( x > ((map.x * TILE_SIZE) - TILE_SIZE))
-	{
-		x = ((map.x * TILE_SIZE) - TILE_SIZE);
-	}
-	if ( y > (map.y * TILE_SIZE) - TILE_SIZE )
-	{
-		y = (map.y * TILE_SIZE) - TILE_SIZE;
-	}
-	// TELEPERRRTT
-	//if ( (x > 0 && x <= 30) && (y <= 30 && y > 0))
-	//{
-	//	currentMap = (currentMap ? 0 : 1);
-	//	y += 30;
-	//}
 }
 
 sf::Vector2f Entity::GetPos()
