@@ -20,17 +20,12 @@ void Game::Run()
 	// Load Main Menu
 	menu.LoadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
 
-	//mock resource manager
-	if(!playerTexture.loadFromFile("Textures/mainchar.png"))
-		std::cout << "Player texture file cannot be found!" << std::endl;
-	if(!npcTexture1.loadFromFile("Textures/npc1.png"))
-		std::cout << "NPC texture file cannot be found!" << std::endl;
-	if(!npcTexture2.loadFromFile("Textures/npc2.png"))
-		std::cout << "NPC texture file cannot be found!" << std::endl;
-	if(!npcTexture3.loadFromFile("Textures/npc3.png"))
-		std::cout << "NPC texture file cannot be found!" << std::endl;
-	if(!enemyTexture.loadFromFile("Textures/unicorn.png"))
-		std::cout << "Enemy texture file cannot be found!" << std::endl;
+	// resource manager
+	playerTexture = rm.LoadTexture("mainchar");
+	npcTexture1 = rm.LoadTexture("npc1");
+	npcTexture2 = rm.LoadTexture("npc2");
+	npcTexture3 = rm.LoadTexture("npc3");
+	enemyTexture = rm.LoadTexture("unicorn");
 
 	player.Init(screenDimensions, 124, 450, playerTexture, map.GetMapSize());
 

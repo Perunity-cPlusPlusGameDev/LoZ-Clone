@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <random>
+#include "resourceManager.h"
 #include "player.h"
 #include "npc.h"
 #include "gameMenu.h"
@@ -31,6 +32,7 @@ private:
 	void ProcessInput();
 	sf::RenderWindow window;
 	sf::Vector2i screenDimensions;
+	ResourceManager rm;
 	Player player;
 	gameMenu menu;
 	Map map, map1, map2, cave, field;
