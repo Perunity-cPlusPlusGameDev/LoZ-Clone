@@ -39,15 +39,12 @@ void Game::Run()
 	townNpc.CreateNPC(154, 480, npcTexture2, map.GetMapSize());
 	townNpc.CreateNPC(188, 480, npcTexture3, map.GetMapSize());
 
-	int randX, randY;
 	std::default_random_engine generator;
 	std::uniform_int_distribution<int> distributionx(0, field.GetMapSize().x * 32);
 	std::uniform_int_distribution<int> distributiony(0, field.GetMapSize().y * 32);
 	for(int i = 0; i < 100; i++)
 	{
-		randX = distributionx(generator);
-		randY = distributiony(generator);
-		fieldEnemy.CreateEnemy(randX, randY, enemyTexture, field.GetMapSize());
+		fieldEnemy.CreateEnemy(distributionx(generator), distributiony(generator), enemyTexture, field.GetMapSize());
 	}
 
 	//Main Loop
