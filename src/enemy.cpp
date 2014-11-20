@@ -3,7 +3,6 @@
 void Enemy::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize, int entityType)
 {
 	Entity::Init(screenDimensions, initPosX, initPosY, _texture, mapSize, entityType);
-
 }
 
 void Enemy::ProcessInput()
@@ -26,7 +25,6 @@ void Enemy::ProcessInput()
 			source.y = RIGHT;
 			velocity.x = 50;
 			break;
-
 	}
 
 }
