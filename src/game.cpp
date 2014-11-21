@@ -8,6 +8,12 @@ void Game::Run()
 	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Zelda Clone");
 	entityManager.Init();
 
+	// Resource manager
+	playerTexture = rm.LoadTexture("mainchar");
+	npcTexture1 = rm.LoadTexture("npc1");
+	npcTexture2 = rm.LoadTexture("npc2");
+	npcTexture3 = rm.LoadTexture("npc3");
+	enemyTexture = rm.LoadTexture("unicorn");
 	townTexture = rm.LoadTexture("RPGpack_sheet");
 	fieldTexture = rm.LoadTexture("hyptosis1");
 
@@ -21,12 +27,6 @@ void Game::Run()
 	// Load Main Menu
 	menu.LoadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
 
-	// Resource manager
-	playerTexture = rm.LoadTexture("mainchar");
-	npcTexture1 = rm.LoadTexture("npc1");
-	npcTexture2 = rm.LoadTexture("npc2");
-	npcTexture3 = rm.LoadTexture("npc3");
-	enemyTexture = rm.LoadTexture("unicorn");
 
 	// Create Player
 	player.Init(screenDimensions, 10, 10, playerTexture, map.GetMapSize());
