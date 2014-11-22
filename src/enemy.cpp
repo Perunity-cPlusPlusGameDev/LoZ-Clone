@@ -26,7 +26,6 @@ void Enemy::ProcessInput()
 			velocity.x = 50;
 			break;
 	}
-
 }
 void Enemy::Update(sf::Time dt)
 {

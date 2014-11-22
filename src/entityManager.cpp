@@ -37,9 +37,8 @@ void EntityManager::CreateEntity(int entityType, int x, int y, sf::Texture& text
 			std::cout << "Invalid entityType specified" << std::endl;
 			break;
 	}
-
-
 }
+
 void EntityManager::ProcessInput()
 {
 	srand(time(NULL));

@@ -83,12 +83,6 @@ void Entity::CheckCollision(float &x, float &y)
 		{
 			y = (map.y * TILE_SIZE) - TILE_SIZE;
 		}
-		// TELEPERRRTT
-		//if ( (x > 0 && x <= 30) && (y <= 30 && y > 0))
-		//{
-		//	currentMap = (currentMap ? 0 : 1);
-		//	y += 30;
-		//}
 	}
 }
 

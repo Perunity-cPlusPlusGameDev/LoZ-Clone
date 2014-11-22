@@ -29,11 +29,15 @@ void gameMenu::LoadMenu(const std::string& fileName, sf::RenderWindow &window, i
 	gui.MakeTextbox("Press S to go setting", window, x/2, y-100, 30, color);
 	gui.MakeTextbox("Press X to exit", window, x/2, y-50, 30, color);
 	window.display();
-	std::cout << "Texture loaded!\n";
+	std::cout << "Menu loaded!\n";
 }
 void gameMenu::Settings()
 {
+	sf::Color color = sf::Color(0, 0, 0);
+	windowSetting.clear();
 	windowSetting.create(sf::VideoMode(400, 400), "Settings", sf::Style::Close);
+	gui.MakeTextbox("Setting", windowSetting, 1, 1, 30, color);
+	windowSetting.display();
 }
 void gameMenu::ProcessEvents()
 {
