@@ -33,10 +33,9 @@ void gameMenu::LoadMenu(const std::string& fileName, sf::RenderWindow &window, i
 }
 void gameMenu::Settings()
 {
-	sf::Color color = sf::Color(0, 0, 0);
 	windowSetting.clear();
 	windowSetting.create(sf::VideoMode(400, 400), "Settings", sf::Style::Close);
-	gui.MakeTextbox("Setting", windowSetting, 1, 1, 30, color);
+	gui.MakeTextbox("Setting", windowSetting, 1, 1, 30, sf::Color(0, 0, 0));
 	windowSetting.display();
 }
 void gameMenu::ProcessEvents()

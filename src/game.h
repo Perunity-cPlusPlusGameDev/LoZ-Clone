@@ -38,6 +38,7 @@ private:
 	int State;
 	sf::Time dt;
 	sf::Clock deltaClock;
+	sf::Clock fpsclock;
 	EntityManager entityManager;
 	sf::Texture npcTexture1 , npcTexture2, npcTexture3;
 	sf::Texture playerTexture;

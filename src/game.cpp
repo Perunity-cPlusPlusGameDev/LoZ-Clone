@@ -6,8 +6,8 @@ void Game::Run()
 	State = GAMESTATE::MAINMENU;
 	screenDimensions = sf::Vector2i(800, 600);
 	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Zelda Clone");
+	window.setFramerateLimit(60);
 	entityManager.Init();
-
 	// Resource manager
 	playerTexture = rm.LoadTexture("mainchar");
 	npcTexture1 = rm.LoadTexture("npc1");
@@ -47,7 +47,6 @@ void Game::Run()
 
 	//  ^^ NEED TO EDIT ENTITYMANAGER FIRST
 
-
 	//Main Loop
 	while (window.isOpen())
 	{
@@ -56,6 +55,7 @@ void Game::Run()
 		{
 			Update(dt);
 			Draw();
+			std::cout<< "FPS: " << 1.f / fpsclock.restart().asSeconds() << std::endl;
 		}
 		menu.ProcessEvents();
 		ProcessEvents();
