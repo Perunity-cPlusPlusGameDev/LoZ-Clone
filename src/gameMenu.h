@@ -15,12 +15,13 @@ public:
 	void LoadMenu(const std::string& fileName, sf::RenderWindow &window, int x, int y);
 	void Settings();
 	void ProcessEvents();
+	bool GetSettingStatus();
 private:
 	sf::Music music;
 	sf::Sprite mainMenu;
 	sf::Texture mainMenuTexture;
 	sf::RenderWindow windowSetting;
 	Gui gui;
-	void MakeText(std::string btnName, sf::RenderWindow &window, int x, int y);
+	bool isSettingOpen;
 };
 #endif

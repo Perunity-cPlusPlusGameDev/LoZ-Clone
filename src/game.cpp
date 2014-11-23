@@ -115,8 +115,7 @@ void Game::ProcessInput()
 {
 	player.ProcessInput();
 	entityManager.ProcessInput();
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R) && (State == GAMESTATE::MAINMENU))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R) && (State == GAMESTATE::MAINMENU) && !menu.GetSettingStatus() )
 	{
 		State = GAMESTATE::PLAYING;
 		std::cout << "State: Playing" << std::endl;
@@ -129,6 +128,5 @@ void Game::ProcessInput()
 	{
 		menu.Settings();
 	}
-
 }
 

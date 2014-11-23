@@ -33,6 +33,7 @@ void gameMenu::LoadMenu(const std::string& fileName, sf::RenderWindow &window, i
 }
 void gameMenu::Settings()
 {
+	isSettingOpen = true;
 	windowSetting.clear();
 	windowSetting.create(sf::VideoMode(400, 400), "Settings", sf::Style::Close);
 	gui.MakeTextbox("Setting", windowSetting, 1, 1, 30, sf::Color(0, 0, 0));
@@ -46,11 +47,16 @@ void gameMenu::ProcessEvents()
 		switch(event.type)
 		{
 			case sf::Event::Closed:
-			windowSetting.close();
-			break;
+				windowSetting.close();
+				isSettingOpen = false;
+				break;
 			default:
-			//std::cout << "An event has fired which hasn't been added to the process list" << std::endl;
-			break;
+				//std::cout << "An event has fired which hasn't been added to the process list" << std::endl;
+				break;
 		}
 	}
+}
+bool gameMenu::GetSettingStatus()
+{
+	return isSettingOpen;
 }
