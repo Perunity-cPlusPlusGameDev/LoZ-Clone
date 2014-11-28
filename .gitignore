@@ -7,3 +7,8 @@
 !/build/Fonts
 lib/
 /latestbuild/*
+/*.opensdf
+/*.sdf
+/*.sln
+/*.v12.suo
+/Loz-clone/*
