@@ -7,7 +7,8 @@ void Game::Run()
 	screenDimensions = sf::Vector2i(800, 600);
 	window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Zelda Clone");
 	window.setFramerateLimit(60);
-	entityManager.Init();
+	npcManager.Init();
+	enemyManager.Init();
 	// Resource manager
 	Texture["playerTexture"] = rm.LoadTexture("mainchar.png");
 	Texture["npcTexture1"] = rm.LoadTexture("npc1.png");
@@ -24,27 +25,27 @@ void Game::Run()
 	cave.LoadMap("Maps/cave.txt", Texture["townTexture"]);
 	field.LoadMap("Maps/Field1.txt", Texture["fieldTexture"]);
 	/*End Of Initialize*/
-
+	
 	// Load Main Menu
-	menu.LoadMenu("Sound/intro.ogg", Texture["menuTexture"], window, screenDimensions.x, screenDimensions.y);
+	menu.LoadMenu("Sound/title.lite.ogg", Texture["menuTexture"], window, screenDimensions.x, screenDimensions.y);
 
 
 	// Create Player
 	player.Init(screenDimensions, 10, 10, Texture["playerTexture"], map.GetMapSize());
 
 	//Create NPCs
-	entityManager.CreateEntity(1, 100, 100, Texture["npcTexture1"], map.GetMapSize());
-	entityManager.CreateEntity(1, 150, 100, Texture["npcTexture2"], map.GetMapSize());
-	entityManager.CreateEntity(1, 200, 100, Texture["npcTexture3"], map.GetMapSize());
+	npcManager.CreateEntity(1, 100, 100, Texture["npcTexture1"], map.GetMapSize());
+	npcManager.CreateEntity(1, 150, 100, Texture["npcTexture2"], map.GetMapSize());
+	npcManager.CreateEntity(1, 200, 100, Texture["npcTexture3"], map.GetMapSize());
 
 	// Create Enemies
-	//std::default_random_engine generator;
-	//std::uniform_int_distribution<int> distributionx(0, field.GetMapSize().x * 32);
-	//std::uniform_int_distribution<int> distributiony(0, field.GetMapSize().y * 32);
-	//for(int i = 0; i < 100; i++)
-	//{
-		//fieldEnemy.CreateEnemy(distributionx(generator), distributiony(generator), enemyTexture, field.GetMapSize());
-	//}
+	std::default_random_engine generator;
+	std::uniform_int_distribution<int> distributionx(0, field.GetMapSize().x * 32);
+	std::uniform_int_distribution<int> distributiony(0, field.GetMapSize().y * 32);
+	for(int i = 0; i < 10; i++)
+	{
+		enemyManager.CreateEntity(1, distributionx(generator), distributiony(generator), Texture["enemyTexture"], map.GetMapSize());
+	}
 
 	//  ^^ NEED TO EDIT ENTITYMANAGER FIRST
 
@@ -68,7 +69,8 @@ void Game::Update(sf::Time _dt)
 {
 	player.Update(_dt);
 	map.SetCurrentMap(currentMap);
-	entityManager.Update(_dt);
+	npcManager.Update(_dt);
+	enemyManager.Update(_dt);
 }
 
 void Game::Draw()
@@ -81,7 +83,8 @@ void Game::Draw()
 	//field.Draw(window);
 	//cave.Draw(window);
 	player.Draw(window);
-	entityManager.Draw(window);
+	npcManager.Draw(window);
+	enemyManager.Draw(window);
 	window.display();
 }
 
@@ -115,7 +118,8 @@ void Game::ProcessEvents()
 void Game::ProcessInput()
 {
 	player.ProcessInput();
-	entityManager.ProcessInput();
+	npcManager.ProcessInput();
+	enemyManager.ProcessInput();
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R) && (State == GAMESTATE::MAINMENU) && !menu.GetSettingStatus() )
 	{
 		State = GAMESTATE::PLAYING;

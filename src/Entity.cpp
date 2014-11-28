@@ -45,24 +45,27 @@ void Entity::Update(sf::Time dt)
 
 void Entity::CheckCollision(float &x, float &y)
 {
-
 	if(entityType == 1)
 	{
 		if( x < startPosition.x - npcWalkingDistance)
 		{
 			x = startPosition.x - npcWalkingDistance;
+			velocity = sf::Vector2i(0, 0);
 		}
 		if( y < startPosition.y - npcWalkingDistance)
 		{
 			y = startPosition.y - npcWalkingDistance;
+			velocity = sf::Vector2i(0, 0);
 		}
 		if( x > startPosition.x + npcWalkingDistance)
 		{
 			x = startPosition.x + npcWalkingDistance;
+			velocity = sf::Vector2i(0, 0);
 		}
 		if( y > startPosition.y + npcWalkingDistance)
 		{
 			y = startPosition.y + npcWalkingDistance;
+			velocity = sf::Vector2i(0, 0);
 		}
 	}
 	else

@@ -40,7 +40,8 @@ private:
 	sf::Time dt;
 	sf::Clock deltaClock;
 	sf::Clock fpsclock;
-	EntityManager entityManager;
+	EntityManager npcManager;
+	EntityManager enemyManager;
 	bool DrawHouse = false;
 	int currentMap = 0;
 	std::unordered_map<std::string, sf::Texture> Texture;
