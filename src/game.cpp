@@ -9,33 +9,33 @@ void Game::Run()
 	window.setFramerateLimit(60);
 	entityManager.Init();
 	// Resource manager
-	playerTexture = rm.LoadTexture("mainchar.png");
-	npcTexture1 = rm.LoadTexture("npc1.png");
-	npcTexture2 = rm.LoadTexture("npc2.png");
-	npcTexture3 = rm.LoadTexture("npc3.png");
-	enemyTexture = rm.LoadTexture("unicorn.png");
-	townTexture = rm.LoadTexture("RPGpack_sheet.png");
-	fieldTexture = rm.LoadTexture("hyptosis1.png");
-	menuTexture = rm.LoadTexture("800x600.jpg");
+	Texture["playerTexture"] = rm.LoadTexture("mainchar.png");
+	Texture["npcTexture1"] = rm.LoadTexture("npc1.png");
+	Texture["npcTexture2"] = rm.LoadTexture("npc2.png");
+	Texture["npcTexture3"] = rm.LoadTexture("npc3.png");
+	Texture["enemyTexture"] = rm.LoadTexture("unicorn.png");
+	Texture["townTexture"] = rm.LoadTexture("RPGpack_sheet.png");
+	Texture["fieldTexture"] = rm.LoadTexture("hyptosis1.png");
+	Texture["menuTexture"] = rm.LoadTexture("800x600.jpg");
 
-	map.LoadMap("Maps/Map1.txt", townTexture); // Improve the way we handle maps
-	map1.LoadMap("Maps/Map1.1.txt", townTexture);
-	map2.LoadMap("Maps/Map1.2.txt", townTexture);
-	cave.LoadMap("Maps/cave.txt", townTexture);
-	field.LoadMap("Maps/Field1.txt", fieldTexture);
+	map.LoadMap("Maps/Map1.txt", Texture["townTexture"]); // Improve the way we handle maps
+	map1.LoadMap("Maps/Map1.1.txt", Texture["townTexture"]);
+	map2.LoadMap("Maps/Map1.2.txt", Texture["townTexture"]);
+	cave.LoadMap("Maps/cave.txt", Texture["townTexture"]);
+	field.LoadMap("Maps/Field1.txt", Texture["fieldTexture"]);
 	/*End Of Initialize*/
 
 	// Load Main Menu
-	menu.LoadMenu("Sound/intro.ogg", menuTexture, window, screenDimensions.x, screenDimensions.y);
+	menu.LoadMenu("Sound/intro.ogg", Texture["menuTexture"], window, screenDimensions.x, screenDimensions.y);
 
 
 	// Create Player
-	player.Init(screenDimensions, 10, 10, playerTexture, map.GetMapSize());
+	player.Init(screenDimensions, 10, 10, Texture["playerTexture"], map.GetMapSize());
 
 	//Create NPCs
-	entityManager.CreateEntity(1, 100, 100, npcTexture1, map.GetMapSize());
-	entityManager.CreateEntity(1, 150, 100, npcTexture2, map.GetMapSize());
-	entityManager.CreateEntity(1, 200, 100, npcTexture3, map.GetMapSize());
+	entityManager.CreateEntity(1, 100, 100, Texture["npcTexture1"], map.GetMapSize());
+	entityManager.CreateEntity(1, 150, 100, Texture["npcTexture2"], map.GetMapSize());
+	entityManager.CreateEntity(1, 200, 100, Texture["npcTexture3"], map.GetMapSize());
 
 	// Create Enemies
 	//std::default_random_engine generator;

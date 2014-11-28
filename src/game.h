@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <random>
+#include <unordered_map>
 #include "resourceManager.h"
 #include "player.h"
 #include "npc.h"
@@ -40,13 +41,8 @@ private:
 	sf::Clock deltaClock;
 	sf::Clock fpsclock;
 	EntityManager entityManager;
-	sf::Texture npcTexture1 , npcTexture2, npcTexture3;
-	sf::Texture playerTexture;
-	sf::Texture enemyTexture;
-	sf::Texture fieldTexture;
-	sf::Texture townTexture;
-	sf::Texture menuTexture;
 	bool DrawHouse = false;
 	int currentMap = 0;
+	std::unordered_map<std::string, sf::Texture> Texture;
 };
 #endif
