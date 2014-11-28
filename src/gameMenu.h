@@ -12,16 +12,15 @@
 class gameMenu
 {
 public:
-	void LoadMenu(const std::string& fileName, sf::RenderWindow &window, int x, int y);
+	void LoadMenu(const std::string& fileName, sf::Texture mainMenuTexture, sf::RenderWindow &window, int x, int y);
 	void Settings();
 	void ProcessEvents();
 	bool GetSettingStatus();
 private:
 	sf::Music music;
 	sf::Sprite mainMenu;
-	sf::Texture mainMenuTexture;
 	sf::RenderWindow windowSetting;
 	Gui gui;
-	bool isSettingOpen;
+	bool isSettingOpen = false;
 };
 #endif

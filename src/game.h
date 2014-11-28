@@ -45,6 +45,7 @@ private:
 	sf::Texture enemyTexture;
 	sf::Texture fieldTexture;
 	sf::Texture townTexture;
+	sf::Texture menuTexture;
 	bool DrawHouse = false;
 	int currentMap = 0;
 };

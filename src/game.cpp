@@ -9,13 +9,14 @@ void Game::Run()
 	window.setFramerateLimit(60);
 	entityManager.Init();
 	// Resource manager
-	playerTexture = rm.LoadTexture("mainchar");
-	npcTexture1 = rm.LoadTexture("npc1");
-	npcTexture2 = rm.LoadTexture("npc2");
-	npcTexture3 = rm.LoadTexture("npc3");
-	enemyTexture = rm.LoadTexture("unicorn");
-	townTexture = rm.LoadTexture("RPGpack_sheet");
-	fieldTexture = rm.LoadTexture("hyptosis1");
+	playerTexture = rm.LoadTexture("mainchar.png");
+	npcTexture1 = rm.LoadTexture("npc1.png");
+	npcTexture2 = rm.LoadTexture("npc2.png");
+	npcTexture3 = rm.LoadTexture("npc3.png");
+	enemyTexture = rm.LoadTexture("unicorn.png");
+	townTexture = rm.LoadTexture("RPGpack_sheet.png");
+	fieldTexture = rm.LoadTexture("hyptosis1.png");
+	menuTexture = rm.LoadTexture("800x600.jpg");
 
 	map.LoadMap("Maps/Map1.txt", townTexture); // Improve the way we handle maps
 	map1.LoadMap("Maps/Map1.1.txt", townTexture);
@@ -25,7 +26,7 @@ void Game::Run()
 	/*End Of Initialize*/
 
 	// Load Main Menu
-	menu.LoadMenu("Sound/intro.ogg", window, screenDimensions.x, screenDimensions.y);
+	menu.LoadMenu("Sound/intro.ogg", menuTexture, window, screenDimensions.x, screenDimensions.y);
 
 
 	// Create Player
@@ -124,7 +125,7 @@ void Game::ProcessInput()
 	{
 		window.close();
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (State == GAMESTATE::MAINMENU))
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (State == GAMESTATE::MAINMENU) && !menu.GetSettingStatus())
 	{
 		menu.Settings();
 	}

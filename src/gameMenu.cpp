@@ -1,6 +1,6 @@
 #include "gameMenu.h"
 
-void gameMenu::LoadMenu(const std::string& fileName, sf::RenderWindow &window, int x, int y){
+void gameMenu::LoadMenu(const std::string& fileName, sf::Texture mainMenuTexture, sf::RenderWindow &window, int x, int y){
 	// Music
 	gui.Init("Triforce");
     if (!music.openFromFile(fileName))
@@ -34,8 +34,8 @@ void gameMenu::LoadMenu(const std::string& fileName, sf::RenderWindow &window, i
 void gameMenu::Settings()
 {
 	isSettingOpen = true;
-	windowSetting.clear();
 	windowSetting.create(sf::VideoMode(400, 400), "Settings", sf::Style::Close);
+	windowSetting.clear();
 	gui.MakeTextbox("Setting", windowSetting, 1, 1, 30, sf::Color(0, 0, 0));
 	windowSetting.display();
 }
