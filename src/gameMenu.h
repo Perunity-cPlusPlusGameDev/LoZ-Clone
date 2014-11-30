@@ -13,7 +13,7 @@
 class gameMenu
 {
 public:
-	void LoadMenu(const std::string& fileName, sf::Texture mainMenuTexture, sf::RenderWindow &window, int x, int y);
+	void LoadMenu(sf::Texture mainMenuTexture, sf::RenderWindow &window, int x, int y);
 	void Settings();
 	void ProcessEvents();
 	bool GetSettingStatus();

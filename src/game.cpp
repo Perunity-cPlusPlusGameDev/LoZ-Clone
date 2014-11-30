@@ -27,7 +27,8 @@ void Game::Run()
 	/*End Of Initialize*/
 	
 	// Load Main Menu
-	menu.LoadMenu("Sound/title.lite.ogg", Texture["menuTexture"], window, screenDimensions.x, screenDimensions.y);
+	rm.PlayMusic("Sound/title.lite.ogg");
+	menu.LoadMenu(Texture["menuTexture"], window, screenDimensions.x, screenDimensions.y);
 
 
 	// Create Player
@@ -58,7 +59,7 @@ void Game::Run()
 		{
 			Update(dt);
 			Draw();
-			std::cout<< "FPS: " << 1.f / fpsclock.restart().asSeconds() << std::endl;
+			//std::cout<< "FPS: " << 1.f / fpsclock.restart().asSeconds() << std::endl;
 		}
 		menu.ProcessEvents();
 		ProcessEvents();
@@ -97,18 +98,22 @@ void Game::ProcessEvents()
 		switch(event.type)
 		{
 			case sf::Event::Closed:
-			window.close();
-			break;
+				window.close();
+				break;
 			case sf::Event::LostFocus:
-			if(State == GAMESTATE::PLAYING)
-				State = GAMESTATE::PAUSED;
-			break;
+				if(State == GAMESTATE::PLAYING)
+					State = GAMESTATE::PAUSED;
+				break;
 			case sf::Event::GainedFocus:
-			if(State == GAMESTATE::PAUSED)
-				State = GAMESTATE::PLAYING;
-			break;
-
-
+				if(State == GAMESTATE::PAUSED)
+					State = GAMESTATE::PLAYING;
+				break;
+			case sf::Event::TextEntered:
+				if (isCmd) {
+					cmdText += (char)event.text.unicode;
+					std::cout << (char)event.text.unicode;
+				}
+				break;
 			default:
 			//std::cout << "An event has fired which hasn't been added to the process list" << std::endl;
 			break;
@@ -116,24 +121,41 @@ void Game::ProcessEvents()
 	}
 }
 
-void Game::ProcessInput()
-{
-	player.ProcessInput();
+void Game::ProcessInput() {
+	if (!isCmd) {
+		player.ProcessInput();
+	}
 	npcManager.ProcessInput();
 	enemyManager.ProcessInput();
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R) && (State == GAMESTATE::MAINMENU) && !menu.GetSettingStatus() )
-	{
-		State = GAMESTATE::PLAYING;
-		std::cout << "State: Playing" << std::endl;
-		rm.PlayMusic("Sound/overworld.ogg");
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::X) && (State == GAMESTATE::MAINMENU))
-	{
-		window.close();
-	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (State == GAMESTATE::MAINMENU) && !menu.GetSettingStatus())
-	{
-		menu.Settings();
+
+	if (State == GAMESTATE::MAINMENU) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::R) && !menu.GetSettingStatus()) {
+			State = GAMESTATE::PLAYING;
+			std::cout << "State: Playing" << std::endl;
+			rm.PlayMusic("Sound/overworld.ogg"); // testing
+		} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) {
+			window.close();
+		} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && !menu.GetSettingStatus()) {
+			menu.Settings();
+		} 
+	} else if (State == GAMESTATE::PLAYING) {
+
+		bool isPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Return);
+		if (isPressed && !wasPressed) {
+			isCmd = !isCmd; // lel
+			if (isCmd) {
+				std::cout << "Enter command: ";
+			}
+			cmd.atCommand(player, cmdText);
+		}
+
+		// Check if the key was held since last frame, aka KeyHeld.
+		//if (isPressed && wasPressed)
+
+		// Check if the key was released since last frame, aka KeyReleased.
+		//if (!isPressed && wasPressed)
+
+		wasPressed = isPressed;
 	}
 }
 

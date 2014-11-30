@@ -11,6 +11,8 @@
 #include "gameMenu.h"
 #include "map.h"
 #include "entityManager.h"
+#include "command.h"
+
 namespace GAMESTATE
 {
 	enum
@@ -30,20 +32,24 @@ private:
 	void Draw();
 	void ProcessEvents();
 	void ProcessInput();
+
 	sf::RenderWindow window;
 	sf::Vector2i screenDimensions;
-	ResourceManager rm;
-	Player player;
-	gameMenu menu;
-	Map map, map1, map2, cave, field;
-	int State;
 	sf::Time dt;
 	sf::Clock deltaClock;
 	sf::Clock fpsclock;
+	ResourceManager rm;
+	Player player;
+	gameMenu menu;
+	Command cmd;
+	Map map, map1, map2, cave, field;
 	EntityManager npcManager;
 	EntityManager enemyManager;
-	bool DrawHouse = false;
+	int State;
+	bool isCmd = false;
+	bool wasPressed = false;
 	int currentMap = 0;
 	std::unordered_map<std::string, sf::Texture> Texture;
+	std::string cmdText;
 };
 #endif

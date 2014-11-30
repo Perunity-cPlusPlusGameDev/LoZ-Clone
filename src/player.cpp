@@ -76,3 +76,7 @@ void Player::Update(sf::Time dt)
 {
 	Entity::Update(dt);
 }
+void Player::SetPos(int posx, int posy, int dir) {
+	sprite.setPosition(posx, posy);
+	source.y = dir;
+}
