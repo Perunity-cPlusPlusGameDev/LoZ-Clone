@@ -50,6 +50,7 @@ void Game::Run()
 	//  ^^ NEED TO EDIT ENTITYMANAGER FIRST
 
 	//Main Loop
+	
 	while (window.isOpen())
 	{
 		dt = deltaClock.restart();
@@ -124,6 +125,7 @@ void Game::ProcessInput()
 	{
 		State = GAMESTATE::PLAYING;
 		std::cout << "State: Playing" << std::endl;
+		rm.PlayMusic("Sound/overworld.ogg");
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::X) && (State == GAMESTATE::MAINMENU))
 	{

@@ -8,6 +8,7 @@
 #include <string>
 #include <iostream>
 #include "gui.h"
+#include "resourceManager.h"
 
 class gameMenu
 {
@@ -22,5 +23,6 @@ private:
 	sf::RenderWindow windowSetting;
 	Gui gui;
 	bool isSettingOpen = false;
+	ResourceManager rm;
 };
 #endif

@@ -3,14 +3,15 @@
 void gameMenu::LoadMenu(const std::string& fileName, sf::Texture mainMenuTexture, sf::RenderWindow &window, int x, int y){
 	// Music
 	gui.Init("Triforce");
-    if (!music.openFromFile(fileName))
-    {
-        std::cout << "Music file cannot be found!\n";
-	}
-	music.play();
-	music.setLoop(true);
-	music.setVolume(0.5f);
-	std::cout << "Music Loaded\n";
+	rm.PlayMusic(fileName);
+ //   if (!music.openFromFile(fileName))
+ //   {
+ //       std::cout << "Music file cannot be found!\n";
+	//}
+	//music.play();
+	//music.setLoop(true);
+	//music.setVolume(0.5f);
+	//std::cout << "Music Loaded\n";
 
 	// Main menu image
 	if(!mainMenuTexture.loadFromFile("Textures/800x600.jpg"))
