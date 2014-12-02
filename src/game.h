@@ -45,6 +45,7 @@ private:
 	Map map, map1, map2, cave, field;
 	EntityManager npcManager;
 	EntityManager enemyManager;
+	EntityManager itemManager;
 	int State;
 	bool isCmd = false;
 	bool wasPressed = false;

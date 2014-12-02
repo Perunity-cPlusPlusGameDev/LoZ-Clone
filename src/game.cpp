@@ -18,7 +18,8 @@ void Game::Run()
 	Texture["townTexture"] = rm.LoadTexture("RPGpack_sheet.png");
 	Texture["fieldTexture"] = rm.LoadTexture("hyptosis1.png");
 	Texture["menuTexture"] = rm.LoadTexture("800x600.jpg");
-
+	Texture["egg"] = rm.LoadTexture("aarons_egg32.png");
+	
 	map.LoadMap("Maps/Map1.txt", Texture["townTexture"]); // Improve the way we handle maps
 	map1.LoadMap("Maps/Map1.1.txt", Texture["townTexture"]);
 	map2.LoadMap("Maps/Map1.2.txt", Texture["townTexture"]);
@@ -38,6 +39,7 @@ void Game::Run()
 	npcManager.CreateEntity(1, 100, 100, Texture["npcTexture1"], map.GetMapSize());
 	npcManager.CreateEntity(1, 150, 100, Texture["npcTexture2"], map.GetMapSize());
 	npcManager.CreateEntity(1, 200, 100, Texture["npcTexture3"], map.GetMapSize());
+	itemManager.CreateEntity(3, 300, 100, Texture["egg"], map.GetMapSize());
 
 	// Create Enemies
 	std::default_random_engine generator;
@@ -73,6 +75,7 @@ void Game::Update(sf::Time _dt)
 	map.SetCurrentMap(currentMap);
 	npcManager.Update(_dt);
 	enemyManager.Update(_dt);
+	itemManager.Update(_dt);
 }
 
 void Game::Draw()
@@ -87,6 +90,7 @@ void Game::Draw()
 	player.Draw(window);
 	npcManager.Draw(window);
 	enemyManager.Draw(window);
+	itemManager.Draw(window);
 	window.display();
 }
 
@@ -127,7 +131,7 @@ void Game::ProcessInput() {
 	}
 	npcManager.ProcessInput();
 	enemyManager.ProcessInput();
-
+	//itemManager.ProcessInput();
 	if (State == GAMESTATE::MAINMENU) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::R) && !menu.GetSettingStatus()) {
 			State = GAMESTATE::PLAYING;

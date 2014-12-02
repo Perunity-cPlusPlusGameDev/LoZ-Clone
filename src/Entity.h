@@ -43,4 +43,5 @@ protected:
 	sf::Vector2i startPosition;
 	int npcWalkingDistance = 50;
 	int entityType;
+	bool rAnimation = false;
 };

@@ -15,19 +15,42 @@ void Entity::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf:
 
 void Entity::Draw(sf::RenderWindow& window)
 {
-	sprite.setTextureRect(sf::IntRect(source.x * 32, source.y * 32, 32, 32));
 	frameCounter += frameSpeed * clock.restart().asSeconds();
-
-		if (frameCounter >= switchFrame)
-		{
+	switch (entityType) {
+	case 1:
+	default:
+		sprite.setTextureRect(sf::IntRect(source.x * 32, source.y * 32, 32, 32));
+		if (frameCounter >= switchFrame) {
 			frameCounter = 0;
-			if(velocity != sf::Vector2i(0,0))
+			if (velocity != sf::Vector2i(0, 0))
 				source.x++;
-			else
-				source.x = 0;
-			if(source.x * 32 >= texture.getSize().x)
+			if (source.x * 32 >= texture.getSize().x)
 				source.x = 0;
 		}
+		break;
+	case 3:
+		sprite.setTextureRect(sf::IntRect(source.x * 32, 0 * 32, 32, 32));
+		if (frameCounter >= switchFrame/2) {
+			frameCounter = 0;
+
+			if (!rAnimation) {
+				source.x++;
+			} else {
+				source.x--;
+			}
+			if (source.x * 32 >= 4 * 32) {
+				rAnimation = true;
+			} else if (source.x * 32 <= 1 * 32){
+				rAnimation = false;
+			}
+			
+		}
+		break;
+	}
+	
+	
+
+
 	window.draw(sprite);
 }
 
@@ -45,7 +68,7 @@ void Entity::Update(sf::Time dt)
 
 void Entity::CheckCollision(float &x, float &y)
 {
-	if(entityType == 1)
+	if(entityType == 1 || entityType == 3)
 	{
 		if( x < startPosition.x - npcWalkingDistance)
 		{

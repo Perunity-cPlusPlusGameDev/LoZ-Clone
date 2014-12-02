@@ -27,6 +27,7 @@ void EntityManager::CreateEntity(int entityType, int x, int y, sf::Texture& text
 	switch(entityType)
 	{
 		case 1:
+		case 3:
 		{
 			std::shared_ptr<Npc> ptr(new Npc);
 			ptr->Init(sf::Vector2i(800, 600), x, y, texture, mapSize, entityType);
