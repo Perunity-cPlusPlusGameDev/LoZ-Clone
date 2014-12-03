@@ -12,11 +12,9 @@
 class Enemy : public Entity
 {
 public:
-	void ProcessInput();
-	void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize, int entityType);
-	void Update(sf::Time dt);
-	int i;
+	void Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& _texture, sf::Vector2i mapSize, int entityType) override;
+	void ProcessInput() override;
 private:
-	int Random;
+	int random;
 
 };
