@@ -12,20 +12,14 @@
 #include "map.h"
 #include "entityManager.h"
 #include "command.h"
-#include "entity.h"
-namespace GAMESTATE{
-	enum {
+
+namespace GAMESTATE
+{
+	enum
+	{
 		MAINMENU = 0,
 		PLAYING = 1,
 		PAUSED = 2,
-	};
-}
-namespace ENTITYTYPE {
-	enum {
-		PLAYER = 0,
-		NPC = 1,
-		MOB = 2,
-		ITEM = 3
 	};
 }
 class Game

@@ -1,9 +1,9 @@
 #include "player.h"
 
 
-void Player::Init(int entityType, sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture, sf::Vector2i mapSize)
+void Player::Init(sf::Vector2i screenDimensions, int initPosX, int initPosY, sf::Texture& texture, sf::Vector2i mapSize)
 {
-	Entity::Init(screenDimensions, initPosX, initPosY, texture, mapSize, entityType);
+	Entity::Init(screenDimensions, initPosX, initPosY, texture, mapSize, 0);
 	// Camera Init
 	view.reset(sf::FloatRect(100, 100, 800, 600));
 	view.setViewport(sf::FloatRect(0.f, 0.f, 1.f, 1.f));
@@ -72,6 +72,10 @@ void Player::CheckCameraBorder(float &x, float &y)
 	}
 }
 
+void Player::Update(sf::Time dt)
+{
+	Entity::Update(dt);
+}
 void Player::SetPos(int posx, int posy, int dir) {
 	sprite.setPosition(posx, posy);
 	source.y = dir;

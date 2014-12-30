@@ -5,7 +5,6 @@
 #include "gui.h"
 #include "entity.h"
 #include "npc.h"
-#include "enemy.h"
 #include <memory>
 #include <iostream>
 

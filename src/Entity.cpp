@@ -17,9 +17,8 @@ void Entity::Draw(sf::RenderWindow& window)
 {
 	frameCounter += frameSpeed * clock.restart().asSeconds();
 	switch (entityType) {
-	case 0:
 	case 1:
-	case 2:
+	default:
 		sprite.setTextureRect(sf::IntRect(source.x * 32, source.y * 32, 32, 32));
 		if (frameCounter >= switchFrame) {
 			frameCounter = 0;
@@ -47,8 +46,6 @@ void Entity::Draw(sf::RenderWindow& window)
 			
 		}
 		break;
-	default:
-		break;
 	}
 	
 	
@@ -71,26 +68,27 @@ void Entity::Update(sf::Time dt)
 
 void Entity::CheckCollision(float &x, float &y)
 {
-	// if x and y change, stop animation
-	int tx = x;
-	int ty = y;
-	if(entityType == 1)
+	if(entityType == 1 || entityType == 3)
 	{
 		if( x < startPosition.x - npcWalkingDistance)
 		{
 			x = startPosition.x - npcWalkingDistance;
+			velocity = sf::Vector2i(0, 0);
 		}
 		if( y < startPosition.y - npcWalkingDistance)
 		{
 			y = startPosition.y - npcWalkingDistance;
+			velocity = sf::Vector2i(0, 0);
 		}
 		if( x > startPosition.x + npcWalkingDistance)
 		{
 			x = startPosition.x + npcWalkingDistance;
+			velocity = sf::Vector2i(0, 0);
 		}
 		if( y > startPosition.y + npcWalkingDistance)
 		{
 			y = startPosition.y + npcWalkingDistance;
+			velocity = sf::Vector2i(0, 0);
 		}
 	}
 	else
@@ -111,9 +109,6 @@ void Entity::CheckCollision(float &x, float &y)
 		{
 			y = (map.y * TILE_SIZE) - TILE_SIZE;
 		}
-	}
-	if (tx == x || ty == y) {
-		velocity = sf::Vector2i(0, 0);
 	}
 }
 

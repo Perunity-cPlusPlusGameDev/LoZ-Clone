@@ -28,17 +28,12 @@ void EntityManager::CreateEntity(int entityType, int x, int y, sf::Texture& text
 	{
 		case 1:
 		case 3:
-			{
-				std::shared_ptr<Npc> ptr(new Npc);
-				ptr->Init(sf::Vector2i(800, 600), x, y, texture, mapSize, entityType);
-				entityList.push_back(ptr);
-			}break;
-		case 2:
-			{
-				std::shared_ptr<Enemy> ptr(new Enemy);
-				ptr->Init(sf::Vector2i(800, 600), x, y, texture, mapSize, entityType);
-				entityList.push_back(ptr);
-			}break;
+		{
+			std::shared_ptr<Npc> ptr(new Npc);
+			ptr->Init(sf::Vector2i(800, 600), x, y, texture, mapSize, entityType);
+			entityList.push_back(ptr);
+		}break;
+
 		default:
 			std::cout << "Invalid entityType specified" << std::endl;
 			break;

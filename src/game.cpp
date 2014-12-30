@@ -21,6 +21,9 @@ void Game::Run()
 	Texture["egg"] = rm.LoadTexture("aarons_egg32.png");
 	
 	map.LoadMap("Maps/Map1.txt", Texture["townTexture"]); // Improve the way we handle maps
+	map1.LoadMap("Maps/Map1.1.txt", Texture["townTexture"]);
+	map2.LoadMap("Maps/Map1.2.txt", Texture["townTexture"]);
+	cave.LoadMap("Maps/cave.txt", Texture["townTexture"]);
 	field.LoadMap("Maps/Field1.txt", Texture["fieldTexture"]);
 	/*End Of Initialize*/
 	
@@ -30,15 +33,13 @@ void Game::Run()
 
 
 	// Create Player
-	player.Init(ENTITYTYPE::PLAYER, screenDimensions, 10, 10, Texture["playerTexture"], map.GetMapSize());
+	player.Init(screenDimensions, 10, 10, Texture["playerTexture"], map.GetMapSize());
 
-	// Create NPCs
-	npcManager.CreateEntity(ENTITYTYPE::NPC, 100, 100, Texture["npcTexture1"], map.GetMapSize());
-	npcManager.CreateEntity(ENTITYTYPE::NPC, 150, 100, Texture["npcTexture2"], map.GetMapSize());
-	npcManager.CreateEntity(ENTITYTYPE::NPC, 200, 100, Texture["npcTexture3"], map.GetMapSize());
-
-	// Create Items
-	itemManager.CreateEntity(ENTITYTYPE::ITEM, 300, 100, Texture["egg"], map.GetMapSize());
+	//Create NPCs
+	npcManager.CreateEntity(1, 100, 100, Texture["npcTexture1"], map.GetMapSize());
+	npcManager.CreateEntity(1, 150, 100, Texture["npcTexture2"], map.GetMapSize());
+	npcManager.CreateEntity(1, 200, 100, Texture["npcTexture3"], map.GetMapSize());
+	itemManager.CreateEntity(3, 300, 100, Texture["egg"], map.GetMapSize());
 
 	// Create Enemies
 	std::default_random_engine generator;
@@ -46,8 +47,11 @@ void Game::Run()
 	std::uniform_int_distribution<int> distributiony(0, field.GetMapSize().y * 32);
 	for(int i = 0; i < 10; i++)
 	{
-		enemyManager.CreateEntity(ENTITYTYPE::MOB, distributionx(generator), distributiony(generator), Texture["enemyTexture"], map.GetMapSize());
+		enemyManager.CreateEntity(1, distributionx(generator), distributiony(generator), Texture["enemyTexture"], map.GetMapSize());
 	}
+
+	//  ^^ NEED TO EDIT ENTITYMANAGER FIRST
+
 	//Main Loop
 	
 	while (window.isOpen())
@@ -78,10 +82,15 @@ void Game::Draw()
 {
 	window.clear();
 	map.Draw(window);
+	//cave.Draw(window);
+	//map1.Draw(window);
+	//map2.Draw(window);
+	//field.Draw(window);
+	//cave.Draw(window);
+	player.Draw(window);
 	npcManager.Draw(window);
 	enemyManager.Draw(window);
 	itemManager.Draw(window);
-	player.Draw(window);
 	window.display();
 }
 

@@ -28,11 +28,12 @@ protected:
 	static const int TILE_SIZE = 32;
 	sf::Sprite sprite;
 	sf::Texture texture;
-	enum DIRECTION {
-		DOWN = 0,
-		LEFT = 1,
-		RIGHT = 2,
-		UP = 3
+	enum DIRECTION
+	{
+	    DOWN = 0,
+	    LEFT = 1,
+	    RIGHT = 2,
+	    UP = 3
 	};
 	sf::Vector2i source;
 	sf::Vector2i velocity;
